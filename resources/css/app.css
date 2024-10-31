@@ -1,0 +1,24 @@
+/* resources/css/app.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-black text-white;
+}
+
+nav {
+  @apply bg-gray-800 p-4 shadow-lg;
+}
+
+nav a {
+  @apply text-white px-4 py-2 hover:bg-gray-600 rounded transition duration-300;
+}
+
+.container h1 {
+  @apply text-3xl font-bold;
+}
+
+.container .w-32 {
+  @apply h-32 bg-gray-300 rounded-full flex items-center justify-center;
+}
