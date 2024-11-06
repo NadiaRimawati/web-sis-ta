@@ -32,17 +32,106 @@
 
             <!-- Content Area (Peta) -->
             <div class="w-11/12 bg-gray-100 rounded-md p-4 relative ml-0 md:ml-2" id="content-area">
-                <div id="pencurian" class="content hidden">Peta Pencurian Provinsi Aceh</div>
+                <div id="pencurian" class="content hidden">
+                    <h2 class="text-xl font-semibold mb-2">Peta Pencurian Provinsi Aceh</h2>
+                    <!-- Filter Tahun untuk Crime Total -->
+                    <div class=" top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
+                        <label for="year-filter-pencurian" class="block text-sm font-semibold">Pilih Tahun</label>
+                        <select id="year-filter-pencurian" class="w-full p-2 bg-red-700 text-white rounded-md"
+                            onchange="filterByYear('pencurian')">
+                            <!-- Daftar tahun akan diisi oleh JavaScript -->
+                        </select>
+                    </div>
+                </div>
+                <div id="penipuan" class="content hidden">
+                    <h2 class="text-xl font-semibold mb-2">Peta Penipuan Provinsi Aceh</h2>
+                    <!-- Filter Tahun untuk Crime Clearance Total -->
+                    <div class=" top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
+                        <label for="year-filter-penipuan" class="block text-sm font-semibold">Pilih Tahun</label>
+                        <select id="year-filter-penipuan" class="w-full p-2 bg-red-700 text-white rounded-md"
+                            onchange="filterByYear('penipuan')">
+                            <!-- Daftar tahun akan diisi oleh JavaScript -->
+                        </select>
+                    </div>
+                </div>
+                <div id="penggelapan" class="content hidden">
+                    <h2 class="text-xl font-semibold mb-2">Peta Penggelapan Provinsi Aceh</h2>
+                    <!-- Filter Tahun untuk Crime Clearance Total -->
+                    <div class=" top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
+                        <label for="year-filter-penggelapan" class="block text-sm font-semibold">Pilih Tahun</label>
+                        <select id="year-filter-penggelapan" class="w-full p-2 bg-red-700 text-white rounded-md"
+                            onchange="filterByYear('penggelapan')">
+                            <!-- Daftar tahun akan diisi oleh JavaScript -->
+                        </select>
+                    </div>
+                </div>
+                <div id="perjudian" class="content hidden">
+                    <h2 class="text-xl font-semibold mb-2">Peta Perjudian Provinsi Aceh</h2>
+                    <!-- Filter Tahun untuk Crime Clearance Total -->
+                    <div class=" top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
+                        <label for="year-filter-perjudian" class="block text-sm font-semibold">Pilih Tahun</label>
+                        <select id="year-filter-perjudian" class="w-full p-2 bg-red-700 text-white rounded-md"
+                            onchange="filterByYear('perjudian')">
+                            <!-- Daftar tahun akan diisi oleh JavaScript -->
+                        </select>
+                    </div>
+                </div>
+                <div id="pemerkosaan" class="content hidden">
+                    <h2 class="text-xl font-semibold mb-2">Peta Pemerkosaan Provinsi Aceh</h2>
+                    <!-- Filter Tahun untuk Crime Clearance Total -->
+                    <div class=" top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
+                        <label for="year-filter-pemerkosaan" class="block text-sm font-semibold">Pilih Tahun</label>
+                        <select id="year-filter-pemerkosaan" class="w-full p-2 bg-red-700 text-white rounded-md"
+                            onchange="filterByYear('pemerkosaan')">
+                            <!-- Daftar tahun akan diisi oleh JavaScript -->
+                        </select>
+                    </div>
+                </div>
+                <div id="pembakaran" class="content hidden">
+                    <h2 class="text-xl font-semibold mb-2">Peta Pembakaran Provinsi Aceh</h2>
+                    <!-- Filter Tahun untuk Crime Clearance Total -->
+                    <div class=" top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
+                        <label for="year-filter-pembakaran" class="block text-sm font-semibold">Pilih Tahun</label>
+                        <select id="year-filter-pembakaran" class="w-full p-2 bg-red-700 text-white rounded-md"
+                            onchange="filterByYear('pembakaran')">
+                            <!-- Daftar tahun akan diisi oleh JavaScript -->
+                        </select>
+                    </div>
+                </div>
+                <div id="pemeresan" class="content hidden">
+                    <h2 class="text-xl font-semibold mb-2">Peta Pemerasan Provinsi Aceh</h2>
+                    <!-- Filter Tahun untuk Crime Clearance Total -->
+                    <div class=" top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
+                        <label for="year-filter-pemeresan" class="block text-sm font-semibold">Pilih Tahun</label>
+                        <select id="year-filter-pemeresan" class="w-full p-2 bg-red-700 text-white rounded-md"
+                            onchange="filterByYear('pemeresan')">
+                            <!-- Daftar tahun akan diisi oleh JavaScript -->
+                        </select>
+                    </div>
+                </div>
+                <div id="pembunuhan" class="content hidden">
+                    <h2 class="text-xl font-semibold mb-2">Peta Crime Pembunuhan Provinsi Aceh</h2>
+                    <!-- Filter Tahun untuk Crime Clearance Total -->
+                    <div class=" top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
+                        <label for="year-filter-pembunuhan" class="block text-sm font-semibold">Pilih Tahun</label>
+                        <select id="year-filter-pembunuhan" class="w-full p-2 bg-red-700 text-white rounded-md"
+                            onchange="filterByYear('pembunuhan')">
+                            <!-- Daftar tahun akan diisi oleh JavaScript -->
+                        </select>
+                    </div>
+                </div>
+
+                <!-- <div id="pencurian" class="content hidden">Peta Pencurian Provinsi Aceh</div>
                 <div id="penipuan" class="content hidden">Peta Penipuan Provinsi Aceh</div>
                 <div id="penggelapan" class="content hidden">Peta Penggelapan Provinsi Aceh</div>
                 <div id="perjudian" class="content hidden">Peta Perjudian Provinsi Aceh</div>
                 <div id="pemerkosaan" class="content hidden">Peta Pemerkosaan Provinsi Aceh</div>
                 <div id="pembakaran" class="content hidden">Peta Pembakaran Provinsi Aceh</div>
                 <div id="pemeresan" class="content hidden">Peta Pemerasan Provinsi Aceh</div>
-                <div id="pembunuhan" class="content hidden">Peta Pembunuhan Provinsi Aceh</div>
+                <div id="pembunuhan" class="content hidden">Peta Pembunuhan Provinsi Aceh</div> -->
                 <!-- Div untuk menampilkan peta -->
                 <div id="map" class="h-screen w-full rounded-md"></div>
-                <div id="legend" class="absolute top-32 left-6 bg-white border border-gray-300 rounded-md p-2">
+                <div id="legend" class="absolute top-[260px] left-6 bg-white border border-gray-300 rounded-md p-2">
                 <h4 class="font-bold">Legenda</h4>
                 <div><span style="background-color: #FF0000; display: inline-block; width: 20px; height: 20px; border: 1px solid #000;"></span> Ada </div>
                 <div><span style="background-color: #008000; display: inline-block; width: 20px; height: 20px; border: 1px solid #000;"></span> Tidak </d>
@@ -79,8 +168,8 @@
             }
 
             function onEachFeature(feature, layer) {
-                const regencyData = crimeData.find(item => item.regency === feature.properties.Kab_Kota);
-                if (feature.properties) {
+                const regencyData = filteredCrimeData.find(item => item.regency === feature.properties.Kab_Kota);
+                if (regencyData) {
                     const areaName = feature.properties.Kab_Kota || 'Nama Wilayah Tidak Tersedia';
                     const popupContent = `
                     <h3 class="text-sm ">Kab/Kota: ${areaName}</h3>
@@ -91,9 +180,11 @@
             }
 
             function style(feature) {
-                const regencyData = crimeData.find(item => item.regency === feature.properties.Kab_Kota);
-                console.log(regencyData.selected_crime)
-                const color = getColor(regencyData.selected_crime)
+                const regencyData = filteredCrimeData.find(item => item.regency === feature.properties.Kab_Kota);
+                let color = "#fff"
+                if (regencyData) {
+                    color = getColor(regencyData.selected_crime)
+                }
                 
                 return {
                     fillColor: color,
@@ -106,14 +197,21 @@
             }
 
             let crimeData = [];
+            let filteredCrimeData = []
             let jenisKriminal = ""
+            let geojsonDatas
+
 
             function getData(endpoint) {
                 fetch(`/jenis-kriminalitas/${endpoint}`)
                     .then(response => response.json())
                     .then(data => {
                         crimeData = data;
+                        filteredCrimeData = data
                         jenisKriminal = endpoint
+
+                        availableYears = [...new Set(data.map(item => item.years))];
+                        updateYearFilter(endpoint);
 
                         if (geojsonLayer) {
                             map.removeLayer(geojsonLayer);
@@ -122,6 +220,8 @@
                         fetch('/map/PETA_KABUPATEN_ACEH.geojson')
                             .then(response => response.json())
                             .then(geojsonData => {
+                                geojsonDatas = geojsonData
+
                                 geojsonLayer = L.geoJSON(geojsonData, {
                                     style: style,
                                     onEachFeature: onEachFeature
@@ -130,6 +230,39 @@
                     })
                     .catch(error => console.error('Error loading data:', error));
             }
+
+            // Mengupdate dropdown tahun
+        function updateYearFilter(endpoint) {
+            const yearFilter = document.getElementById(`year-filter-${endpoint}`);
+            yearFilter.innerHTML = ''; // Menghapus opsi sebelumnya
+
+            // Menambahkan opsi untuk setiap tahun yang tersedia
+            availableYears.forEach(years => {
+                const option = document.createElement('option');
+                option.value = years;
+                option.textContent = years;
+                yearFilter.appendChild(option);
+            });
+        }
+
+        function filterByYear(endpoint) {
+            const selectedYear = document.getElementById(`year-filter-${endpoint}`).value;
+
+            filteredCrimeData = crimeData.filter(item => item.years == selectedYear);
+
+            if (geojsonLayer) {
+                map.removeLayer(geojsonLayer);
+            }
+
+            geojsonLayer = L.geoJSON(geojsonDatas, {
+                style: style,
+                onEachFeature: onEachFeature
+            }).addTo(map);
+        }
+
+
+        // Inisialisasi tampilan awal
+        showContent('pencurian');
         </script>
     </body>
 </html>

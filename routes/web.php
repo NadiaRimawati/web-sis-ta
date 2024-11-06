@@ -19,6 +19,7 @@ use App\Http\Controllers\KriminalitasController;
 
 
 
+
 Route::get('/', [HomeController::class, 'index'])->name('beranda');
 Route::get('/informasi', [InfoController::class, 'index'])->name('informasi');
 Route::get('/peta', [HomeController::class, 'peta'])->name('peta');
@@ -49,3 +50,10 @@ Route::get('/peta-1', [PetaController::class, 'showPeta1'])->name('peta_1');
 Route::get('/peta-2', [PetaController::class, 'showPeta2'])->name('peta_2');
 Route::get('/peta-3', [PetaController::class, 'showPeta3'])->name('peta_3');
 Route::get('/jenis-kriminalitas/{crimeType}', [JenisKriminalitasController::class, 'getCrimeDataByType']);
+Route::get('/jenis_kriminalitas', [JenisKriminalitasController::class, 'index'])->name('jenis_kriminalitas.index');
+Route::get('/jenis_kriminalitas/{id}/edit', [JenisKriminalitasController::class, 'edit'])->name('jenis_kriminalitas.edit');
+Route::post('/jenis_kriminalitas/update/{id}', [JenisKriminalitasController::class, 'update'])->name('jenis_kriminalitas.update');
+Route::get('/jenis_kriminalitas/create', [JenisKriminalitasController::class, 'create'])->name('jenis_kriminalitas.create');
+Route::post('/jenis_kriminalitas/create', [JenisKriminalitasController::class, 'store'])->name('jenis_kriminalitas.post');
+Route::delete('/jenis_kriminalitas/{id}', [JenisKriminalitasController::class, 'destroy'])->name('jenis_kriminalitas.destroy');
+Route::get('/jenis_kriminalitas/download', [JenisKriminalitasController::class, 'download'])->name('jenis_kriminalitas.download');

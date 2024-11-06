@@ -1,6 +1,13 @@
+
 @extends('layouts.app') <!-- Sesuaikan dengan layout Anda -->
 
 @section('content')
+<!-- Menyembunyikan navbar dan footer khusus pada halaman ini -->
+<style>
+    .navbar { display: none; }
+    footer { display: none; } /* Menghilangkan footer */
+</style>
+
 <div class="container mx-auto mt-5">
     <h1 class="text-2xl font-bold mb-4">Tambah Data Kriminalitas</h1>
     
@@ -103,7 +110,7 @@
         </div>
 
         <div class="flex justify-end">
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Simpan</button>
+            <button type="submit" class="bg-red-600 hover:bg-red-900 text-white py-2 px-4 rounded">Simpan</button>
         </div>
     </form>
 </div>

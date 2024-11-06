@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.dashboard') 
 
 @section('content')
 
@@ -11,14 +11,16 @@
     <div class="px-3 py-4">
       <!-- Tombol unduh dan tambah -->
       <div class="flex space-x-4 mb-4">
-        <button id="downloadBtn" type="button" class="text-sm bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        <a href="{{ route('jenis_kriminalitas.download') }}"
+          class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">
           Unduh Data
-        </button>
-        <button id="addDataBtn" type="button" class="text-sm bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        </a>
+        <a href="{{ route('jenis_kriminalitas.create') }}"
+          class=" bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">
           Tambah Data
-        </button>
+        </a>
       </div>
-      
+
       <table class="min-w-full text-xs bg-white shadow-md rounded mb-4" id="dataTable">
         <thead>
           <tr class="border-b">
@@ -39,48 +41,55 @@
         <tbody>
           <!-- Baris Tabel -->
           @foreach ($jenis_kriminalitas as $index => $data)
-          <tr class="border-b hover:bg-orange-100 {{ $index % 2 == 0 ? 'bg-gray-100' : '' }}">
-            <td class="text-center p-1">{{ $index + 1 }}</td>
-            <td class="text-center p-1">
-              <span>{{$data->years}}</span>
-            </td>
-            <td class="text-center p-1">
-              <span>{{ $data->regency }}</span>
-            </td>
-            <td class="text-center p-1">
-              <span>{{ $data->pencurian == 1 ? 'Ada' : 'Tidak Ada'}}</span>
-            </td>
-            <td class="text-center p-1">
-            <span>{{ $data->penipuan == 1 ? 'Ada' : 'Tidak Ada'}}</span>
-            </td>
-            <td class="text-center p-1">
-            <span>{{ $data->penggelapan == 1 ? 'Ada' : 'Tidak Ada'}}</span>
-            </td>
-            <td class="text-center p-1">
-            <span>{{ $data->perjudian == 1 ? 'Ada' : 'Tidak Ada'}}</span>
-            </td>
-            <td class="text-center p-1">
-            <span>{{ $data->pemerkosaan == 1 ? 'Ada' : 'Tidak Ada'}}</span>
-            </td>
-            <td class="text-center p-1">
-            <span>{{ $data->pembakaran == 1 ? 'Ada' : 'Tidak Ada'}}</span>
-            </td>
-            <td class="text-center p-1">
-            <span>{{ $data->pemeresan == 1 ? 'Ada' : 'Tidak Ada'}}</span>
-            </td>
-            <td class="text-center p-1">
-            <span>{{ $data->pembunuhan == 1 ? 'Ada' : 'Tidak Ada'}}</span>
-            </td>
-            <td class="text-center p-1 flex justify-center space-x-1">
-              <button type="button" class="text-xs bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">
-                <i class="fas fa-edit"></i>
-              </button>
-              <button type="button" class="text-xs bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">
-                <i class="fas fa-trash"></i>
-              </button>
-            </td>
-          </tr>
-          @endforeach
+        <tr class="border-b hover:bg-orange-100 {{ $index % 2 == 0 ? 'bg-gray-100' : '' }}">
+        <td class="text-center p-1">{{ $index + 1 }}</td>
+        <td class="text-center p-1">
+          <span>{{$data->years}}</span>
+        </td>
+        <td class="text-center p-1">
+          <span>{{ $data->regency }}</span>
+        </td>
+        <td class="text-center p-1">
+          <span>{{ $data->pencurian == 1 ? 'Ada' : 'Tidak Ada'}}</span>
+        </td>
+        <td class="text-center p-1">
+          <span>{{ $data->penipuan == 1 ? 'Ada' : 'Tidak Ada'}}</span>
+        </td>
+        <td class="text-center p-1">
+          <span>{{ $data->penggelapan == 1 ? 'Ada' : 'Tidak Ada'}}</span>
+        </td>
+        <td class="text-center p-1">
+          <span>{{ $data->perjudian == 1 ? 'Ada' : 'Tidak Ada'}}</span>
+        </td>
+        <td class="text-center p-1">
+          <span>{{ $data->pemerkosaan == 1 ? 'Ada' : 'Tidak Ada'}}</span>
+        </td>
+        <td class="text-center p-1">
+          <span>{{ $data->pembakaran == 1 ? 'Ada' : 'Tidak Ada'}}</span>
+        </td>
+        <td class="text-center p-1">
+          <span>{{ $data->pemeresan == 1 ? 'Ada' : 'Tidak Ada'}}</span>
+        </td>
+        <td class="text-center p-1">
+          <span>{{ $data->pembunuhan == 1 ? 'Ada' : 'Tidak Ada'}}</span>
+        </td>
+        <td class="text-center p-3 px-5 flex justify-center space-x-2">
+          <a href="{{ route('jenis_kriminalitas.edit', $data->id) }}"
+          class="text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">
+          <i class="fas fa-edit"></i>
+          </a>
+          <form action="{{ route('jenis_kriminalitas.destroy', $data->id) }}" method="POST"
+          onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+          @csrf
+          @method('DELETE')
+          <button type="submit"
+            class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">
+            <i class="fas fa-trash"></i>
+          </button>
+          </form>
+        </td>
+        </tr>
+      @endforeach
         </tbody>
       </table>
     </div>
@@ -88,9 +97,9 @@
 </div>
 
 <script>
-  document.getElementById('downloadBtn').addEventListener('click', function() {
+  document.getElementById('downloadBtn').addEventListener('click', function () {
     const table = document.getElementById('dataTable');
-    const rows = Array.from(table.querySelectorAll('tr')).map(row => 
+    const rows = Array.from(table.querySelectorAll('tr')).map(row =>
       Array.from(row.querySelectorAll('td, th')).map(cell => cell.textContent).join(',')
     );
     const csvContent = rows.join('\n');
@@ -104,7 +113,7 @@
   });
 
   // Event listener untuk tombol tambah data
-  document.getElementById('addDataBtn').addEventListener('click', function() {
+  document.getElementById('addDataBtn').addEventListener('click', function () {
     const table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
     const newRow = table.insertRow(); // Menambahkan baris baru
     const cellCount = table.rows[0].cells.length; // Menghitung jumlah kolom
@@ -114,7 +123,7 @@
       if (i === 0) {
         newCell.textContent = table.rows.length; // Nomor baris baru
       } else if (i === cellCount - 1) {
-        newCell.innerHTML = `<button type="button" class="text-xs bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">
+        newCell.innerHTML = <button type="button" class="text-xs bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">
                                <i class="fas fa-edit"></i>
                              </button>
                              <button type="button" class="text-xs bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">
@@ -122,9 +131,9 @@
                              </button>
                              <button type="button" class="text-xs bg-green-500 hover:bg-green-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">
                                <i class="fas fa-plus"></i>
-                             </button>`;
+                             </button>;
       } else {
-        newCell.innerHTML = `<span class="bg-transparent text-center w-full"></span>`; // Teks kosong untuk data baru
+        newCell.innerHTML = <span class="bg-transparent text-center w-full"></span>; // Teks kosong untuk data baru
       }
     }
   });

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\CrimeExist;
 use App\Models\CrimeIncident;
+use DB;
 use Illuminate\Http\Request;
+use Schema;
 
 class PetaController extends Controller
 {
@@ -49,8 +51,6 @@ class PetaController extends Controller
         return $this->assignClassesToCrimeData($crime);
     }
 
-
-
     public function getCCT()
     {
         $crime = CrimeIncident::all()->map(function($crime) {
@@ -65,6 +65,23 @@ class PetaController extends Controller
         return $this->assignClassesToCrimeData($crime);
     }
 
+    public function getUniqueYears($table)
+{
+    // Check if the table parameter is provided and if it has a 'years' column
+    if (!$table || !Schema::hasTable($table) || !Schema::hasColumn($table, 'years')) {
+        return response()->json(['error' => 'Invalid table name or years column does not exist'], 400);
+    }
+
+    // Retrieve unique years from the specified table
+    $years = DB::table($table)
+                ->select('years')
+                ->distinct()
+                ->orderBy('years', 'desc')
+                ->pluck('years');
+
+    return response()->json($years);
+}
+
     // Tambahkan metode showPeta1 di sini
     public function showPeta1()
     {
@@ -74,16 +91,14 @@ class PetaController extends Controller
 
     public function showPeta2()
     {
-        // Ambil data yang diperlukan untuk peta 3
-        $data = CrimeIncident::select('years', 'regency', 'totalP21')->get(); // Sesuaikan sesuai kebutuhan
-        return view('peta2', compact('data')); // Pastikan ada file 'peta1.blade.php' di folder resources/views
+      
+        return view('peta2'); // Pastikan ada file 'peta1.blade.php' di folder resources/views
     }
 
     public function showPeta3()
     {
         // Ambil data yang diperlukan untuk peta 3
-        $data = CrimeIncident::select('years', 'regency', 'totalP21')->get(); // Sesuaikan sesuai kebutuhan
-        return view('peta3', compact('data')); // Pastikan ada file 'peta1.blade.php' di folder resources/views
+        return view('peta3'); // Pastikan ada file 'peta1.blade.php' di folder resources/views
     }
 
     private function assignClassesToCrimeData($crime)
