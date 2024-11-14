@@ -7,7 +7,7 @@
 </style>
 
 <div class="container mx-auto mt-5">
-    <h1 class="text-2xl font-bold mb-4">Tambah Data Crime Exist</h1>
+    <h1 class="text-2xl font-bold mb-4">Tambah Data jenis kriminalitas</h1>
     
     @if (session('success'))
         <div class="bg-green-500 text-white p-2 rounded mb-4">
@@ -53,78 +53,27 @@
 
         <div class="mb-4">
             <label for="years" class="block text-gray-700 font-medium">Tahun</label>
-            <input type="string" name="years" id="years" class="mt-1 p-2 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            <input type="text" name="years" id="years" class="mt-1 p-2 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            @error('years')
+                <div class="text-red-500 text-sm">{{ $message }}</div>
+            @enderror
         </div>
 
-   
         <!-- Field khusus untuk setiap jenis kejahatan -->
-        <div class="mb-4">
-            <label for="pencurian" class="block text-gray-700 font-medium">Pencurian</label>
-            <select name="pencurian" id="pencurian" class="mt-1 p-2 border rounded w-full" required>
-                <option value="1">Ada</option>
-                <option value="0">Tidak Ada</option>
-            </select>
-        </div>
-
-        <div class="mb-4">
-            <label for="penipuan" class="block text-gray-700 font-medium">Penipuan</label>
-            <select name="penipuan" id="penipuan" class="mt-1 p-2 border rounded w-full" required>
-                <option value="1">Ada</option>
-                <option value="0">Tidak Ada</option>
-            </select>
-        </div>
-
-        <div class="mb-4">
-            <label for="penggelapan" class="block text-gray-700 font-medium">Penggelapan</label>
-            <select name="penggelapan" id="penggelapan" class="mt-1 p-2 border rounded w-full" required>
-                <option value="1">Ada</option>
-                <option value="0">Tidak Ada</option>
-            </select>
-        </div>
-
-        <div class="mb-4">
-            <label for="perjudian" class="block text-gray-700 font-medium">Perjudian</label>
-            <select name="perjudian" id="perjudian" class="mt-1 p-2 border rounded w-full" required>
-                <option value="1">Ada</option>
-                <option value="0">Tidak Ada</option>
-            </select>
-        </div>
-
-        <div class="mb-4">
-            <label for="pemerkosaan" class="block text-gray-700 font-medium">Pemerkosaan</label>
-            <select name="pemerkosaan" id="pemerkosaan" class="mt-1 p-2 border rounded w-full" required>
-                <option value="1">Ada</option>
-                <option value="0">Tidak Ada</option>
-            </select>
-        </div>
-
-        <div class="mb-4">
-            <label for="pembakaran" class="block text-gray-700 font-medium">Pembakaran</label>
-            <select name="pembakaran" id="pembakaran" class="mt-1 p-2 border rounded w-full" required>
-                <option value="1">Ada</option>
-                <option value="0">Tidak Ada</option>
-            </select>
-        </div>
-
-        <div class="mb-4">
-            <label for="pemeresan" class="block text-gray-700 font-medium">Pemerasan</label>
-            <select name="pemeresan" id="pemeresan" class="mt-1 p-2 border rounded w-full" required>
-                <option value="1">Ada</option>
-                <option value="0">Tidak Ada</option>
-            </select>
-        </div>
-
-        <div class="mb-4">
-            <label for="pembunuhan" class="block text-gray-700 font-medium">Pembunuhan</label>
-            <select name="pembunuhan" id="pembunuhan" class="mt-1 p-2 border rounded w-full" required>
-                <option value="1">Ada</option>
-                <option value="0">Tidak Ada</option>
-            </select>
-        </div>
+        @foreach(['pencurian', 'penipuan', 'penggelapan', 'perjudian', 'pemerkosaan', 'pembakaran', 'pemeresan', 'pembunuhan'] as $crime)
+            <div class="mb-4">
+                <label for="{{ $crime }}" class="block text-gray-700 font-medium">{{ ucfirst($crime) }}</label>
+                <select name="{{ $crime }}" id="{{ $crime }}" class="mt-1 p-2 border rounded w-full" required>
+                    <option value="1">Ada</option>
+                    <option value="0">Tidak Ada</option>
+                </select>
+            </div>
+        @endforeach
 
         <div class="flex justify-end">
             <button type="submit" class="bg-red-600 hover:bg-red-900 text-white py-2 px-4 rounded">Simpan</button>
         </div>
     </form>
 </div>
+
 @endsection

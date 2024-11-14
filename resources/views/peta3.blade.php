@@ -121,20 +121,13 @@
                     </div>
                 </div>
 
-                <!-- <div id="pencurian" class="content hidden">Peta Pencurian Provinsi Aceh</div>
-                <div id="penipuan" class="content hidden">Peta Penipuan Provinsi Aceh</div>
-                <div id="penggelapan" class="content hidden">Peta Penggelapan Provinsi Aceh</div>
-                <div id="perjudian" class="content hidden">Peta Perjudian Provinsi Aceh</div>
-                <div id="pemerkosaan" class="content hidden">Peta Pemerkosaan Provinsi Aceh</div>
-                <div id="pembakaran" class="content hidden">Peta Pembakaran Provinsi Aceh</div>
-                <div id="pemeresan" class="content hidden">Peta Pemerasan Provinsi Aceh</div>
-                <div id="pembunuhan" class="content hidden">Peta Pembunuhan Provinsi Aceh</div> -->
-                <!-- Div untuk menampilkan peta -->
+
                 <div id="map" class="h-screen w-full rounded-md"></div>
                 <div id="legend" class="absolute top-[260px] left-6 bg-white border border-gray-300 rounded-md p-2">
                 <h4 class="font-bold">Legenda</h4>
                 <div><span style="background-color: #FF0000; display: inline-block; width: 20px; height: 20px; border: 1px solid #000;"></span> Ada </div>
                 <div><span style="background-color: #008000; display: inline-block; width: 20px; height: 20px; border: 1px solid #000;"></span> Tidak </d>
+                <div><span style="background-color: #fff; display: inline-block; width: 20px; height: 20px; border: 1px solid #000;"></span> Tidak Ada Data</d>
             </div>
             </div>
         </div>
@@ -174,6 +167,14 @@
                     const popupContent = `
                     <h3 class="text-sm ">Kab/Kota: ${areaName}</h3>
                     <h3 class="text-sm">Tahun: ${regencyData.years}</h3>
+                    `;
+                    layer.bindPopup(popupContent);
+                } else {
+                    const areaName = feature.properties.Kab_Kota || 'Nama Wilayah Tidak Tersedia';
+                    const popupContent = `
+                    <h3 class="text-sm ">Kab/Kota: ${areaName}</h3>
+                    <h3 class="text-sm">Tahun: ${filteredCrimeData[0].years}</h3>
+                    <h3 class="text-sm">Tidak ada data</h3>
                     `;
                     layer.bindPopup(popupContent);
                 }

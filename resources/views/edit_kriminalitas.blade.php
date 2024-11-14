@@ -9,21 +9,15 @@
 
 <div class="container mx-auto mt-5">
     <h1 class="text-2xl font-bold mb-4">Edit Data Kriminalitas</h1>
-    
-    @if (session('success'))
-        <div class="bg-green-500 text-white p-2 rounded mb-4">
-            {{ session('success') }}
-        </div>
-    @endif
-    
     <form action="{{ route('kriminalitas.update', $crimeIncident->id) }}" method="POST">
         @csrf
+        @method('PUT') <!-- Untuk menyatakan bahwa ini adalah request PUT -->
 
         <!-- Kolom Tahun di bagian paling atas -->
         <div class="mb-4">
             <label for="tahun" class="block text-gray-700">Tahun</label>
-            <input type="number" name="tahun" id="tahun" value="{{ old('years', $crimeIncident->years) }}" class="mt-1 p-2 border rounded w-full" required>
-            @error('years')
+            <input type="number" name="tahun" id="tahun" value="{{ old('tahun', $crimeIncident->tahun) }}" class="mt-1 p-2 border rounded w-full" required>
+            @error('tahun')
                 <div class="text-red-500 text-sm">{{ $message }}</div>
             @enderror
         </div>

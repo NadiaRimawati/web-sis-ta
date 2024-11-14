@@ -4,22 +4,33 @@
             <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-20 w-20 object-cover">
         </div>
         <div class="flex space-x-4 relative">
-            <a href="{{ route('beranda') }}" class="text-gray-900 px-4 py-2 hover:bg-red-900 hover:text-white rounded transition duration-300">Beranda</a>
-            <a href="{{ route('informasi') }}" class="text-gray-900 px-4 py-2 hover:bg-red-900 hover:text-white rounded transition duration-300">Informasi</a>
-            
+            <a href="{{ route('beranda') }}"
+                class="text-gray-900 px-4 py-2 hover:bg-red-900 hover:text-white rounded transition duration-300">Beranda</a>
+            <a href="{{ route('informasi') }}"
+                class="text-gray-900 px-4 py-2 hover:bg-red-900 hover:text-white rounded transition duration-300">Informasi</a>
+            <a href="{{ route('chart') }}"
+                class="text-gray-900 px-4 py-2 hover:bg-red-900 hover:text-white rounded transition duration-300">Grafik</a>
             <!-- Menu Peta dengan Dropdown -->
             <div class="relative group">
-                <button class="text-gray-900 px-4 py-2 hover:bg-red-900 hover:text-white rounded transition duration-300 focus:outline-none">
+                <button
+                    class="text-gray-900 px-4 py-2 hover:bg-red-900 hover:text-white rounded transition duration-300 focus:outline-none">
                     Peta
                 </button>
-                <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg hidden group-hover:block z-50" id="dropdownMenu"> <!-- Tambahkan z-50 -->
-                    <a href="{{ route('peta_1') }}" class="block px-4 py-2 text-gray-800 hover:bg-red-900 hover:text-white">Peta CT dan CCT</a>
-                    <a href="{{ route('peta_2') }}" class="block px-4 py-2 text-gray-800 hover:bg-red-900 hover:text-white">Peta jenis tahapan CC</a>
-                    <a href="{{ route('peta_3') }}" class="block px-4 py-2 text-gray-800 hover:bg-red-900 hover:text-white">Peta jenis kejahatan</a>
+                <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg hidden group-hover:block z-50"
+                    id="dropdownMenu"> <!-- Tambahkan z-50 -->
+                    <a href="{{ route('peta_1') }}"
+                        class="block px-4 py-2 text-gray-800 hover:bg-red-900 hover:text-white">Peta CT dan CCT</a>
+                    <a href="{{ route('peta_2') }}"
+                        class="block px-4 py-2 text-gray-800 hover:bg-red-900 hover:text-white">Peta jenis tahapan
+                        CC</a>
+                    <a href="{{ route('peta_3') }}"
+                        class="block px-4 py-2 text-gray-800 hover:bg-red-900 hover:text-white">Peta jenis kejahatan</a>
                 </div>
             </div>
 
-            <a href="{{ route('tentang_kami') }}" class="text-gray-900 px-4 py-2 hover:bg-red-900 hover:text-white rounded transition duration-300">Tentang Kami</a>
+            <a href="{{ route('tentang_kami') }}"
+                class="text-gray-900 px-4 py-2 hover:bg-red-900 hover:text-white rounded transition duration-300">Tentang
+                Kami</a>
         </div>
     </div>
 </nav>
@@ -31,11 +42,13 @@
     }
 
     #dropdownMenu {
-        z-index: 50; /* Pastikan z-index dropdown lebih tinggi dari peta */
+        z-index: 50;
+        /* Pastikan z-index dropdown lebih tinggi dari peta */
     }
 
     #map {
-        z-index: 0; /* Pastikan z-index peta lebih rendah */
+        z-index: 0;
+        /* Pastikan z-index peta lebih rendah */
     }
 </style>
 

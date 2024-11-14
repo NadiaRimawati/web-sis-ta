@@ -15,6 +15,8 @@ use App\Http\Controllers\PetaController;
 use App\Http\Controllers\ccController;
 use App\Http\Controllers\detailController;
 use App\Http\Controllers\KriminalitasController;
+use App\Http\Controllers\GrafikController;
+use App\Http\Controllers\CrimeDataController;
 
 
 
@@ -22,6 +24,7 @@ use App\Http\Controllers\KriminalitasController;
 
 Route::get('/', [HomeController::class, 'index'])->name('beranda');
 Route::get('/informasi', [InfoController::class, 'index'])->name('informasi');
+Route::get('/grafik', [GrafikController::class, 'index'])->name('grafik');
 Route::get('/peta', [HomeController::class, 'peta'])->name('peta');
 Route::get('/tentang_kami', [TentangController::class, 'index'])->name('tentang_kami');
 Route::get('/kriminalitas', [KriminalitasController::class, 'index'])->name('kriminalitas')->middleware('auth');
@@ -57,3 +60,9 @@ Route::get('/jenis_kriminalitas/create', [JenisKriminalitasController::class, 'c
 Route::post('/jenis_kriminalitas/create', [JenisKriminalitasController::class, 'store'])->name('jenis_kriminalitas.post');
 Route::delete('/jenis_kriminalitas/{id}', [JenisKriminalitasController::class, 'destroy'])->name('jenis_kriminalitas.destroy');
 Route::get('/jenis_kriminalitas/download', [JenisKriminalitasController::class, 'download'])->name('jenis_kriminalitas.download');
+Route::get('/crime-data', [GrafikController::class, 'showChart'])->name('chart');
+
+
+
+
+

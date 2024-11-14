@@ -103,10 +103,11 @@
         <!-- Kolom Pemerasan -->
         <div class="mb-4">
             <label for="pemerasan" class="block text-gray-700">Pemerasan</label>
-            <select name="pemerasan" id="pemerasan" class="mt-1 p-2 border rounded w-full" required>
-                <option value="1" {{ $crimeExist->pemerasan == 1 ? 'selected' : '' }}>Ada</option>
-                <option value="0" {{ $crimeExist->pemerasan == 0 ? 'selected' : '' }}>Tidak Ada</option>
-            </select>
+            <select name="pemeresan" id="pemeresan" class="mt-1 p-2 border rounded w-full" required>
+     <option value="1" {{ old('pemeresan') == 1 ? 'selected' : '' }}>Ada</option>
+    <option value="0" {{ old('pemeresan') == 0 ? 'selected' : '' }}>Tidak Ada</option>
+</select>
+
             @error('pemerasan')
                 <div class="text-red-500 text-sm">{{ $message }}</div>
             @enderror

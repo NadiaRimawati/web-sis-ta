@@ -53,7 +53,7 @@
             <!-- Map div dengan margin-top untuk memberi jarak antara filter dan peta -->
             <div id="map" class="h-screen w-full rounded-md mt-32"></div>
 
-            <div id="legend" class="absolute top-64 left-6 bg-white border border-gray-300 rounded-md p-2 z-10">
+            <id="legend" class="absolute top-64 left-6 bg-white border border-gray-300 rounded-md p-2 z-10">
                 <h4 class="font-bold">Legenda</h4>
                 <div><span
                         style="background-color: #FF0000; display: inline-block; width: 20px; height: 20px; border: 1px solid #000;"></span>
@@ -70,6 +70,10 @@
                 <div><span
                         style="background-color: #008000; display: inline-block; width: 20px; height: 20px; border: 1px solid #000;"></span>
                     Tingkat 1 (Terendah)</div>
+            <div><span
+                        style="background-color: #fff; display: inline-block; width: 20px; height: 20px; border: 1px solid #000;"></span>
+                    Tidak Ada Data</div>
+
             </div>
 
 
@@ -141,8 +145,16 @@
                     <h3 class="font-bold text-lg">Total: ${total}</h3>
                 `;
                 layer.bindPopup(popupContent);
-            }
-        }
+            } else {
+                    const areaName = feature.properties.Kab_Kota || 'Nama Wilayah Tidak Tersedia';
+                    const popupContent = `
+                    <h3 class="text-sm ">Kab/Kota: ${areaName}</h3>
+                    <h3 class="text-sm">Tahun: ${filteredCrimeData[0].years}</h3>
+                    <h3 class="text-sm">Tidak ada data</h3>
+                    `;
+                    layer.bindPopup(popupContent);
+                }
+             }
 
         function getData(endpoint) {
             fetch(`/kriminalitas/${endpoint}`)
