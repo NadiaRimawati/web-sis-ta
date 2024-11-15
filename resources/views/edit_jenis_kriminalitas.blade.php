@@ -10,23 +10,26 @@
 <div class="container mx-auto mt-5">
     <h1 class="text-2xl font-bold mb-4">Edit Data Jenis Kriminalitas</h1>
     
-    @if (session('success'))
-        <div class="bg-green-500 text-white p-2 rounded mb-4">
-            {{ session('success') }}
-        </div>
-    @endif
-    
     <form action="{{ route('jenis_kriminalitas.update', $crimeExist->id) }}" method="POST">
         @csrf
+        @method('PUT')
+       <!-- Kolom Tahun -->
+<div class="mb-4">
+    <label for="tahun" class="block text-gray-700">Tahun</label>
+    <input type="number" name="tahun" id="tahun" value="{{ old('years', $crimeExist->years) }}" class="mt-1 p-2 border rounded w-full" required disabled>
+    @error('years')
+        <div class="text-red-500 text-sm">{{ $message }}</div>
+    @enderror
+</div>
 
-        <!-- Kolom Tahun -->
-        <div class="mb-4">
-            <label for="tahun" class="block text-gray-700">Tahun</label>
-            <input type="number" name="tahun" id="tahun" value="{{ old('years', $crimeExist->years) }}" class="mt-1 p-2 border rounded w-full" required>
-            @error('years')
-                <div class="text-red-500 text-sm">{{ $message }}</div>
-            @enderror
-        </div>
+<!-- Kolom Kabupaten/Kota -->
+<div class="mb-4">
+    <label for="regency" class="block text-gray-700">Kabupaten/Kota</label>
+    <input type="text" name="regency" id="regency" value="{{ old('regency', $crimeExist->regency) }}" class="mt-1 p-2 border rounded w-full" required disabled>
+    @error('regency')
+        <div class="text-red-500 text-sm">{{ $message }}</div>
+    @enderror
+</div>
 
         <!-- Kolom Pencurian -->
         <div class="mb-4">

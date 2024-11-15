@@ -43,7 +43,7 @@ Route::match(['get', 'post'], '/admin', [AdminController::class, 'login'])->name
 Route::get('/kriminalitas', [KriminalitasController::class, 'index'])->name('kriminalitas.index');
 Route::get('/kriminalitas', [KriminalitasController::class, 'getall'])->name('kriminalitas');
 Route::get('/kriminalitas/{id}/edit', [KriminalitasController::class, 'edit'])->name('kriminalitas.edit');
-Route::post('/kriminalitas/update/{id}', [KriminalitasController::class, 'update'])->name('kriminalitas.update');
+Route::put('/kriminalitas/update/{id}', [KriminalitasController::class, 'update'])->name('kriminalitas.update');
 Route::get('/kriminalitas/create', [KriminalitasController::class, 'create'])->name('kriminalitas.create');
 Route::post('/kriminalitas/create', [KriminalitasController::class, 'post'])->name('kriminalitas.post');
 Route::delete('/kriminalitas/{id}', [KriminalitasController::class, 'destroy'])->name('kriminalitas.destroy');
@@ -55,14 +55,9 @@ Route::get('/peta-3', [PetaController::class, 'showPeta3'])->name('peta_3');
 Route::get('/jenis-kriminalitas/{crimeType}', [JenisKriminalitasController::class, 'getCrimeDataByType']);
 Route::get('/jenis_kriminalitas', [JenisKriminalitasController::class, 'index'])->name('jenis_kriminalitas.index');
 Route::get('/jenis_kriminalitas/{id}/edit', [JenisKriminalitasController::class, 'edit'])->name('jenis_kriminalitas.edit');
-Route::post('/jenis_kriminalitas/update/{id}', [JenisKriminalitasController::class, 'update'])->name('jenis_kriminalitas.update');
 Route::get('/jenis_kriminalitas/create', [JenisKriminalitasController::class, 'create'])->name('jenis_kriminalitas.create');
 Route::post('/jenis_kriminalitas/create', [JenisKriminalitasController::class, 'store'])->name('jenis_kriminalitas.post');
 Route::delete('/jenis_kriminalitas/{id}', [JenisKriminalitasController::class, 'destroy'])->name('jenis_kriminalitas.destroy');
 Route::get('/jenis_kriminalitas/download', [JenisKriminalitasController::class, 'download'])->name('jenis_kriminalitas.download');
 Route::get('/crime-data', [GrafikController::class, 'showChart'])->name('chart');
-
-
-
-
-
+Route::put('/jenis_kriminalitas/update/{id}', [JenisKriminalitasController::class, 'update'])->name('jenis_kriminalitas.update');

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<!-- component -->
+<!-- Tambahkan skrip yang dibutuhkan -->
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/js-file-download@0.4.12/dist/js-file-download.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Tambahkan SweetAlert2 -->
@@ -19,27 +19,28 @@
           Unduh Data
         </a>
         <a href="{{ route('jenis_kriminalitas.create') }}"
-          class=" bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">
           Tambah Data
         </a>
       </div>
 
       <table class="min-w-full text-xs bg-white shadow-md rounded mb-4" id="myTable">
         <thead>
-          <tr class="border-b">
-            <th class="text-center p-1">No</th>
-            <th class="text-center p-1">Tahun</th>
-            <th class="text-center p-1">Daerah</th>
-            <th class="text-center p-1">Pencurian</th>
-            <th class="text-center p-1">Penipuan</th>
-            <th class="text-center p-1">Penggelapan</th>
-            <th class="text-center p-1">Perjudian</th>
-            <th class="text-center p-1">Pemerkosaan</th>
-            <th class="text-center p-1">Pembakaran</th>
-            <th class="text-center p-1">Pemerasan</th>
-            <th class="text-center p-1">Pembunuhan</th>
-            <th class="text-center p-1">Aksi</th>
-          </tr>
+        <tr class="border-b">
+    <th class="text-center p-1 align-middle">No</th>
+    <th class="text-center p-1 align-middle">Tahun</th>
+    <th class="text-center p-1 align-middle">Kabupaten/Kota</th>
+    <th class="text-center p-1 align-middle">Pencurian</th>
+    <th class="text-center p-1 align-middle">Penipuan</th>
+    <th class="text-center p-1 align-middle">Penggelapan</th>
+    <th class="text-center p-1 align-middle">Perjudian</th>
+    <th class="text-center p-1 align-middle">Pemerkosaan</th>
+    <th class="text-center p-1 align-middle">Pembakaran</th>
+    <th class="text-center p-1 align-middle">Pemerasan</th>
+    <th class="text-center p-1 align-middle">Pembunuhan</th>
+    <th class="text-center p-1 align-middle">Aksi</th>
+</tr>
+
         </thead>
         <tbody>
           <!-- Baris Tabel -->
@@ -117,18 +118,6 @@
       }
     });
   }
-
-  // SweetAlert untuk menambahkan data
-  document.getElementById('addDataBtn').addEventListener('click', function () {
-    Swal.fire({
-      title: 'Data berhasil ditambahkan!',
-      icon: 'success',
-      showConfirmButton: false,
-      timer: 1500
-    }).then(() => {
-      location.reload(); // Refresh halaman untuk melihat data terbaru
-    });
-  });
 
   // SweetAlert untuk tombol unduh data
   document.getElementById('downloadBtn').addEventListener('click', function () {

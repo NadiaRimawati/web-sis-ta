@@ -30,50 +30,61 @@ class KriminalitasController extends Controller
     // Metode untuk menampilkan form edit
     public function edit($id)
     {
+
         $crimeIncident = CrimeIncident::findOrFail($id);
         return view('edit_kriminalitas', ['crimeIncident' => $crimeIncident]);
     }
 
     // Metode untuk memperbarui data kriminalitas
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'totalP21' => 'required|integer',
-            'totalTahap2' => 'required|integer',
-            'totalRJ' => 'required|integer',
-            'totalSP3' => 'required|integer',
-            'totalSP2LID' => 'required|integer',
-        ]);
+   public function update(Request $request, $id)
+{
+    // Validasi input
+    $request->validate([
+        'totalP21' => 'required|integer',
+        'totalTahap2' => 'required|integer',
+        'totalRJ' => 'required|integer',
+        'totalSP3' => 'required|integer',
+        'totalSP2LID' => 'required|integer',
+    ]);
 
-        $crimeIncident = CrimeIncident::findOrFail($id);
-        $crimeIncident->update($request->only([
-            'totalP21',
-            'totalTahap2',
-            'totalRJ',
-            'totalSP3',
-            'totalSP2LID'
-        ]));
+    // Mencari record CrimeIncident berdasarkan ID
+    $crimeIncident = CrimeIncident::findOrFail($id);
 
-        // Menggunakan SweetAlert untuk pesan sukses
-        return redirect()->route('kriminalitas')->with('success', 'Data berhasil diperbarui!');
-    }
+    // Melakukan update hanya untuk field yang diperlukan
+    $crimeIncident->update($request->only([
+        'totalP21',
+        'totalTahap2',
+        'totalRJ',
+        'totalSP3',
+        'totalSP2LID'
+    ]));
+
+    // Redirect atau response setelah data diperbarui
+    return redirect()->route('kriminalitas')->with('success', 'Data kriminalitas berhasil diperbarui');
+}
+
 
     // Metode untuk menghapus data kriminalitas
     public function destroy($id)
     {
+
         $crimeIncident = CrimeIncident::findOrFail($id);
         $crimeIncident->delete();
 
         // Hapus cache agar data yang dihapus tidak muncul lagi
         Cache::forget('crime_incidents_all');
+        session()->flash('success', 'Data berhasil dihapus!');
+
 
         // Menggunakan SweetAlert untuk pesan sukses
-        return redirect()->route('kriminalitas')->with('success', 'Data berhasil dihapus!');
+        return redirect()->route('kriminalitas');
+        
     }
 
     // Menampilkan form untuk tambah data baru
     public function create()
     {
+
         return view('create_kriminalitas');
     }
 
@@ -112,8 +123,13 @@ class KriminalitasController extends Controller
             'totalSP2LID' => $request->totalSP2LID,
         ]);
 
+        session()->flash('success', 'Data berhasil diperbarui!');
+
         // Menggunakan SweetAlert untuk pesan sukses
-        return redirect()->route('kriminalitas')->with('success', 'Data berhasil ditambahkan!');
+        return redirect()->route('kriminalitas');
+        
+        
+        
     }
 
     // Download data dalam format Excel

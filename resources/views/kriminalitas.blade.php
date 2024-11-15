@@ -35,17 +35,17 @@
       <table class="w-full text-md bg-white shadow-md rounded mb-4" id="myTable">
         <thead>
           <tr class="border-b">
-            <th class="text-center p-3 px-5">No</th>
-            <th class="text-center p-3 px-5">Tahun</th>
-            <th class="text-center p-3 px-5">Daerah</th>
-            <th class="text-center p-3 px-5">CT</th>
-            <th class="text-center p-3 px-5">P21</th>
-            <th class="text-center p-3 px-5">Tahap II</th>
-            <th class="text-center p-3 px-5">RJ</th>
-            <th class="text-center p-3 px-5">SP3</th>
-            <th class="text-center p-3 px-5">SP2LID</th>
-            <th class="text-center p-3 px-5">Total CCT</th>
-            <th class="text-center p-3 px-5">Aksi</th>
+            <th class="text-center p-1 align-middle">No</th>
+            <th class="text-center p-1 align-middle">Tahun</th>
+            <th class="text-center p-1 align-middle">Kabupaten/Kota</th>
+            <th class="text-center p-1 align-middle">CT</th>
+            <th class="text-center p-1 align-middle">P21</th>
+            <th class="text-center p-1 align-middle">Tahap II</th>
+            <th class="text-center p-1 align-middle">RJ</th>
+            <th class="text-center p-1 align-middle">SP3</th>
+            <th class="text-center p-1 align-middle">SP2LID</th>
+            <th class="text-center p-1 align-middle">Total CCT</th>
+            <th class="text-center p-1 align-middle">Aksi</th>
           </tr>
         </thead>
         <tbody>
