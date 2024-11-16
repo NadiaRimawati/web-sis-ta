@@ -84,25 +84,34 @@
     </main>
   </div>
 
-  @if(session('success') && !request()->routeIs('kriminalitas.edit'))
+  @if (session('success'))
     <script>
-      Swal.fire({
-        icon: 'success',
-        title: 'Berhasil!',
-        text: '{{ session('success') }}'
-      });
+        Swal.fire({
+            icon: 'success',
+            title: 'Sukses',
+            text: '{{ session('success') }}',
+            showConfirmButton: false,
+            timer: 1500
+        }).then(function() {
+            window.location.href = "{{ route('jenis_kriminalitas.index') }}"; // Redirect ke halaman yang diinginkan
+        });
     </script>
-  @endif
+@endif
 
-  @if(session('error') && !request()->routeIs('kriminalitas.edit'))
+@if (session('error'))
     <script>
-      Swal.fire({
-        icon: 'error',
-        title: 'Gagal!',
-        text: '{{ session('error') }}'
-      });
+        Swal.fire({
+            icon: 'error',
+            title: 'Kesalahan',
+            text: '{{ session('error') }}',
+            showConfirmButton: false,
+            timer: 1500
+        }).then(function() {
+            window.location.href = "{{ route('jenis_kriminalitas.index') }}"; // Redirect ke halaman yang diinginkan
+        });
     </script>
-  @endif
+@endif
+
 
   <script>
     // SweetAlert confirmation for delete

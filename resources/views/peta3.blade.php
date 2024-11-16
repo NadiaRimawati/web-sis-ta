@@ -25,7 +25,7 @@
                     <li class="cursor-pointer hover:bg-red-700 p-2 rounded" onclick="showContent('perjudian')">Perjudian</li>
                     <li class="cursor-pointer hover:bg-red-700 p-2 rounded" onclick="showContent('pemerkosaan')">Pemerkosaan</li>
                     <li class="cursor-pointer hover:bg-red-700 p-2 rounded" onclick="showContent('pembakaran')">Pembakaran</li>
-                    <li class="cursor-pointer hover:bg-red-700 p-2 rounded" onclick="showContent('pemeresan')">Pemerasan</li>
+                    <li class="cursor-pointer hover:bg-red-700 p-2 rounded" onclick="showContent('pemergesan')">Pemerasan</li>
                     <li class="cursor-pointer hover:bg-red-700 p-2 rounded" onclick="showContent('pembunuhan')">Pembunuhan</li>
                 </ul>
             </div>

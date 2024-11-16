@@ -60,7 +60,7 @@ class KriminalitasController extends Controller
     ]));
 
     // Redirect atau response setelah data diperbarui
-    return redirect()->route('kriminalitas')->with('success', 'Data kriminalitas berhasil diperbarui');
+    return redirect()->route('kriminalitas')->with('success', 'Data Berhasil Diperbarui');
 }
 
 
@@ -73,11 +73,9 @@ class KriminalitasController extends Controller
 
         // Hapus cache agar data yang dihapus tidak muncul lagi
         Cache::forget('crime_incidents_all');
-        session()->flash('success', 'Data berhasil dihapus!');
-
-
+      
         // Menggunakan SweetAlert untuk pesan sukses
-        return redirect()->route('kriminalitas');
+        return redirect()->route('kriminalitas')->with('success', 'Data Berhasil Dihapus');
         
     }
 
@@ -123,10 +121,8 @@ class KriminalitasController extends Controller
             'totalSP2LID' => $request->totalSP2LID,
         ]);
 
-        session()->flash('success', 'Data berhasil diperbarui!');
-
         // Menggunakan SweetAlert untuk pesan sukses
-        return redirect()->route('kriminalitas');
+        return redirect()->route('kriminalitas')->with('success', 'Data Berhasil Ditambahkan');
         
         
         

@@ -1,6 +1,7 @@
 @extends('layouts.app') <!-- Sesuaikan dengan layout Anda -->
 
 @section('content')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Menyembunyikan navbar dan footer khusus pada halaman ini -->
 <style>
     .navbar { display: none; }
@@ -23,14 +24,13 @@
         </div>
 
         <!-- Kolom Kabupaten/Kota -->
-<div class="mb-4">
-    <label for="regency" class="block text-gray-700">Kabupaten/Kota</label>
-    <input type="text" name="regency" id="regency" value="{{ old('regency', $crimeIncident->regency) }}" class="mt-1 p-2 border rounded w-full" required disabled>
-    @error('regency')
-        <div class="text-red-500 text-sm">{{ $message }}</div>
-    @enderror
-</div>
-
+        <div class="mb-4">
+            <label for="regency" class="block text-gray-700">Kabupaten/Kota</label>
+            <input type="text" name="regency" id="regency" value="{{ old('regency', $crimeIncident->regency) }}" class="mt-1 p-2 border rounded w-full" required disabled>
+            @error('regency')
+                <div class="text-red-500 text-sm">{{ $message }}</div>
+            @enderror
+        </div>
 
         <!-- Kolom Total P21 -->
         <div class="mb-4">
@@ -91,4 +91,58 @@
         </div>
     </form>
 </div>
+<!-- 
+@if(session('success') && !request()->routeIs('kriminalitas.edit'))
+    <script>
+      Swal.fire({
+        icon: 'success',
+        title: 'Berhasil!',
+        text: '{{ session('success') }}'
+      });
+    </script>
+  @endif
+
+  @if(session('error') && !request()->routeIs('kriminalitas.edit'))
+    <script>
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal!',
+        text: '{{ session('error') }}'
+      });
+    </script>
+  @endif -->
+
+<!-- SweetAlert trigger script -->
+<!-- <script>
+    @if(session('status') == 'success')
+        Swal.fire({
+            icon: 'success',
+            title: 'Data berhasil diperbarui!',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    @elseif(session('status') == 'error')
+        Swal.fire({
+            icon: 'error',
+            title: 'Terjadi kesalahan!',
+            text: 'Data gagal diperbarui.',
+            showConfirmButton: true
+        });
+    @endif
+</script> -->
+
+@if (session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Sukses',
+            text: '{{ session('success') }}',
+            showConfirmButton: false,
+            timer: 1500
+        }).then(function() {
+            window.location.href = "{{ route('kriminalitas') }}"; // Redirect ke halaman yang diinginkan
+        });
+    </script>
+@endif
+
 @endsection

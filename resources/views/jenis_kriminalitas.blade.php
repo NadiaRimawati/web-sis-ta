@@ -100,6 +100,35 @@
   </main>
 </div>
 
+@if (session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Sukses',
+            text: '{{ session('success') }}',
+            showConfirmButton: false,
+            timer: 1500
+        }).then(function() {
+            window.location.href = "{{ route('kriminalitas') }}"; // Redirect ke halaman yang diinginkan
+        });
+    </script>
+@endif
+
+@if (session('error'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Kesalahan',
+            text: '{{ session('error') }}',
+            showConfirmButton: false,
+            timer: 1500
+        }).then(function() {
+            window.location.href = "{{ route('kriminalitas') }}"; // Redirect ke halaman yang diinginkan
+        });
+    </script>
+@endif
+
+
 <script>
   // SweetAlert untuk konfirmasi penghapusan data
   function deleteData(id) {
