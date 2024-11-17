@@ -71,7 +71,7 @@
         @endforeach
 
         <div class="flex justify-end">
-            <button type="submit" class="bg-red-600 hover:bg-red-900 text-white py-2 px-4 rounded">Simpan</button>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Simpan</button>
         </div>
     </form>
 </div>

@@ -12,7 +12,7 @@
     </div>
     <nav :class="{'block': open, 'hidden': !open}" class="flex-grow md:block bg-slate-100 px-4 pb-4 md:pb-0 md:overflow-y-auto">
       <a href="{{ route('kriminalitas') }}" class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">Kriminalitas</a>
-      <a href="{{ route('jenis-kriminalitas') }}" class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">Jenis Kriminalitas</a>
+      <a href="{{ route('jenis-kriminalitas.index') }}" class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">Jenis Kriminalitas</a>
       <a href="{{ route('admin') }}" class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">Keluar</a>
     </nav>
   </div>

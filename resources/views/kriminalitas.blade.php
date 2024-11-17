@@ -93,7 +93,7 @@
             showConfirmButton: false,
             timer: 1500
         }).then(function() {
-            window.location.href = "{{ route('jenis_kriminalitas.index') }}"; // Redirect ke halaman yang diinginkan
+            window.location.href = "{{ route('kriminalitas') }}"; // Redirect ke halaman yang diinginkan
         });
     </script>
 @endif
@@ -107,7 +107,7 @@
             showConfirmButton: false,
             timer: 1500
         }).then(function() {
-            window.location.href = "{{ route('jenis_kriminalitas.index') }}"; // Redirect ke halaman yang diinginkan
+            window.location.href = "{{ route('kriminalitas') }}"; // Redirect ke halaman yang diinginkan
         });
     </script>
 @endif

@@ -54,14 +54,14 @@ Route::prefix('kriminalitas')->middleware('auth')->group(function () {
 });
 
 // Rute Jenis Kriminalitas
-Route::prefix('jenis_kriminalitas')->middleware('auth')->group(function () {
-    Route::get('/', [JenisKriminalitasController::class, 'index'])->name('jenis_kriminalitas.index');
-    Route::get('/{id}/edit', [JenisKriminalitasController::class, 'edit'])->name('jenis_kriminalitas.edit');
-    Route::put('/update/{id}', [JenisKriminalitasController::class, 'update'])->name('jenis_kriminalitas.update');
-    Route::get('/create', [JenisKriminalitasController::class, 'create'])->name('jenis_kriminalitas.create');
-    Route::post('/create', [JenisKriminalitasController::class, 'store'])->name('jenis_kriminalitas.post');
-    Route::delete('/{id}', [JenisKriminalitasController::class, 'destroy'])->name('jenis_kriminalitas.destroy');
-    Route::get('/download', [JenisKriminalitasController::class, 'download'])->name('jenis_kriminalitas.download');
+Route::prefix('jenis-kriminalitas')->middleware('auth')->group(function () {
+    Route::get('/', [JenisKriminalitasController::class, 'index'])->name('jenis-kriminalitas.index');
+    Route::get('/{id}/edit', [JenisKriminalitasController::class, 'edit'])->name('jenis-kriminalitas.edit');
+    Route::put('/update/{id}', [JenisKriminalitasController::class, 'update'])->name('jenis-kriminalitas.update');
+    Route::get('/create', [JenisKriminalitasController::class, 'create'])->name('jenis-kriminalitas.create');
+    Route::post('/create', [JenisKriminalitasController::class, 'store'])->name('jenis-kriminalitas.post');
+    Route::delete('/{id}', [JenisKriminalitasController::class, 'destroy'])->name('jenis-kriminalitas.destroy');
+    Route::get('/download', [JenisKriminalitasController::class, 'download'])->name('jenis-kriminalitas.download');
     Route::get('/{crimeType}', [JenisKriminalitasController::class, 'getCrimeDataByType']);
 });
 
