@@ -23,7 +23,8 @@
       <!-- Tombol unduh dan tambah -->
       <div class="flex space-x-4 mb-4">
         <a href="{{ route('kriminalitas.download') }}"
-          class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          id="downloadBtn">
           Unduh Data
         </a>
         <a href="{{ route('kriminalitas.create') }}"
@@ -131,6 +132,22 @@
         }
       });
     }
+
+     // SweetAlert untuk tombol unduh data
+ 
+     document.getElementById('downloadBtn').addEventListener('click', function (event) {
+    event.preventDefault(); // Mencegah tindakan default tombol
+    Swal.fire({
+        title: 'Data sedang diunduh!',
+        icon: 'info',
+        showConfirmButton: false,
+        timer: 1500
+    }).then(() => {
+        // Redirect ke URL unduh XLSX
+        window.location.href = event.target.href;
+    });
+});
+
   </script>
 
 @endsection

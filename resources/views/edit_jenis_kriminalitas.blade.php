@@ -10,7 +10,7 @@
 <div class="container mx-auto mt-5">
     <h1 class="text-2xl font-bold mb-4">Edit Data Jenis Kriminalitas</h1>
     
-    <form action="{{ route('jenis_kriminalitas.update', $crimeExist->id) }}" method="POST">
+    <form action="{{ route('jenis-kriminalitas.update', $crimeExist->id) }}" method="POST">
         @csrf
         @method('PUT')
        <!-- Kolom Tahun -->

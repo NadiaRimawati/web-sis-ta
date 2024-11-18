@@ -50,7 +50,7 @@ class JenisKriminalitasController extends Controller
             'regency', 'years', 'pencurian', 'penipuan', 'penggelapan', 'perjudian', 'pemerkosaan', 'pembakaran', 'pemeresan', 'pembunuhan'
         ]));
 
-        return redirect()->route('jenis_kriminalitas.index')->with('success', 'Data berhasil ditambahkan!'); // Success message
+        return redirect()->route('jenis-kriminalitas.index')->with('success', 'Data berhasil ditambahkan!'); // Success message
     }
 
     // Menampilkan form untuk mengedit data jenis kriminalitas
@@ -81,7 +81,7 @@ class JenisKriminalitasController extends Controller
             'pencurian', 'penipuan', 'penggelapan', 'perjudian', 'pemerkosaan', 'pembakaran', 'pemeresan', 'pembunuhan'
         ]));
 
-        return redirect()->route('jenis_kriminalitas.index')->with('success', 'Data berhasil diperbarui!'); // Success message
+        return redirect()->route('jenis-kriminalitas.index')->with('success', 'Data berhasil diperbarui!'); // Success message
     }
 
     // Menghapus data jenis kriminalitas
@@ -90,7 +90,7 @@ class JenisKriminalitasController extends Controller
         $crimeExist = CrimeExist::findOrFail($id);
         $crimeExist->delete();
 
-        return redirect()->route('jenis_kriminalitas.index')->with('success', 'Data berhasil dihapus!'); // Success message
+        return redirect()->route('jenis-kriminalitas.index')->with('success', 'Data berhasil dihapus!'); // Success message
     }
 
     // Mengunduh data dalam format Excel

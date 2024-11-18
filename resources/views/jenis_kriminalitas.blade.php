@@ -13,12 +13,12 @@
     <div class="px-3 py-4">
       <!-- Tombol unduh dan tambah -->
       <div class="flex space-x-4 mb-4">
-        <a href="{{ route('jenis_kriminalitas.download') }}"
+        <a href="{{ route('jenis-kriminalitas.download') }}"
           class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           id="downloadBtn">
           Unduh Data
         </a>
-        <a href="{{ route('jenis_kriminalitas.create') }}"
+        <a href="{{ route('jenis-kriminalitas.create') }}"
           class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">
           Tambah Data
         </a>
@@ -78,11 +78,11 @@
               <span>{{ $data->pembunuhan == 1 ? 'Ada' : 'Tidak Ada'}}</span>
             </td>
             <td class="text-center p-3 px-5 flex justify-center space-x-2">
-              <a href="{{ route('jenis_kriminalitas.edit', $data->id) }}"
+              <a href="{{ route('jenis-kriminalitas.edit', $data->id) }}"
                 class="text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">
                 <i class="fas fa-edit"></i>
               </a>
-              <form action="{{ route('jenis_kriminalitas.destroy', $data->id) }}" method="POST" id="delete-form-{{ $data->id }}">
+              <form action="{{ route('jenis-kriminalitas.destroy', $data->id) }}" method="POST" id="delete-form-{{ $data->id }}">
                 @csrf
                 @method('DELETE')
                 <button type="button"
@@ -109,7 +109,7 @@
             showConfirmButton: false,
             timer: 1500
         }).then(function() {
-            window.location.href = "{{ route('jenis_kriminalitas.index') }}"; // Redirect ke halaman yang diinginkan
+            window.location.href = "{{ route('jenis-kriminalitas.index') }}"; // Redirect ke halaman yang diinginkan
         });
     </script>
 @endif
@@ -149,27 +149,19 @@
   }
 
   // SweetAlert untuk tombol unduh data
-  document.getElementById('downloadBtn').addEventListener('click', function () {
+  document.getElementById('downloadBtn').addEventListener('click', function (event) {
+    event.preventDefault(); // Mencegah tindakan default tombol
     Swal.fire({
-      title: 'Data sedang diunduh!',
-      icon: 'info',
-      showConfirmButton: false,
-      timer: 1500
+        title: 'Data sedang diunduh!',
+        icon: 'info',
+        showConfirmButton: false,
+        timer: 1500
     }).then(() => {
-      const table = document.getElementById('myTable');
-      const rows = Array.from(table.querySelectorAll('tr')).map(row =>
-        Array.from(row.querySelectorAll('td, th')).map(cell => cell.textContent).join(',')
-      );
-      const csvContent = rows.join('\n');
-      const blob = new Blob([csvContent], { type: 'text/csv' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = 'data.csv';
-      link.click();
-      URL.revokeObjectURL(url);
+        // Redirect ke URL unduh XLSX
+        window.location.href = event.target.href;
     });
-  });
+});
+
 </script>
 
 @endsection

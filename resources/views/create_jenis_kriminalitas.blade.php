@@ -15,7 +15,7 @@
         </div>
     @endif
 
-    <form action="{{ route('jenis_kriminalitas.create') }}" method="POST" class="bg-white p-6 rounded-lg shadow-md">
+    <form action="{{ route('jenis-kriminalitas.create') }}" method="POST" class="bg-white p-6 rounded-lg shadow-md">
         @csrf
         
         <div class="mb-4">
