@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
         <!-- Tambahkan Leaflet Search CSS -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet-search/dist/leaflet-search.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     </head>
 
     <body class="bg-gray-100">
@@ -25,100 +26,124 @@
                     <li class="cursor-pointer hover:bg-red-700 p-2 rounded" onclick="showContent('perjudian')">Perjudian</li>
                     <li class="cursor-pointer hover:bg-red-700 p-2 rounded" onclick="showContent('pemerkosaan')">Pemerkosaan</li>
                     <li class="cursor-pointer hover:bg-red-700 p-2 rounded" onclick="showContent('pembakaran')">Pembakaran</li>
-                    <li class="cursor-pointer hover:bg-red-700 p-2 rounded" onclick="showContent('pemergesan')">Pemerasan</li>
+                    <li class="cursor-pointer hover:bg-red-700 p-2 rounded" onclick="showContent('pemeresan')">Pemerasan</li>
                     <li class="cursor-pointer hover:bg-red-700 p-2 rounded" onclick="showContent('pembunuhan')">Pembunuhan</li>
                 </ul>
             </div>
 
-            <!-- Content Area (Peta) -->
-            <div class="w-11/12 bg-gray-100 rounded-md p-4 relative ml-0 md:ml-2" id="content-area">
+             <!-- Content Area (Peta) -->
+             <div class="w-11/12 bg-gray-100 rounded-md p-4 relative ml-0 md:ml-2" id="content-area">
                 <div id="pencurian" class="content hidden">
                     <h2 class="text-xl font-semibold mb-2">Peta Pencurian Provinsi Aceh</h2>
                     <!-- Filter Tahun untuk Crime Total -->
-                    <div class=" top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
+                    <div class="top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
                         <label for="year-filter-pencurian" class="block text-sm font-semibold">Pilih Tahun</label>
                         <select id="year-filter-pencurian" class="w-full p-2 bg-red-700 text-white rounded-md"
                             onchange="filterByYear('pencurian')">
                             <!-- Daftar tahun akan diisi oleh JavaScript -->
                         </select>
                     </div>
+                    <button onclick="downloadMap('pencurian)" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
+                    Unduh Peta
+                </button>
                 </div>
                 <div id="penipuan" class="content hidden">
                     <h2 class="text-xl font-semibold mb-2">Peta Penipuan Provinsi Aceh</h2>
                     <!-- Filter Tahun untuk Crime Clearance Total -->
-                    <div class=" top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
+                    <div class="top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
                         <label for="year-filter-penipuan" class="block text-sm font-semibold">Pilih Tahun</label>
                         <select id="year-filter-penipuan" class="w-full p-2 bg-red-700 text-white rounded-md"
                             onchange="filterByYear('penipuan')">
                             <!-- Daftar tahun akan diisi oleh JavaScript -->
                         </select>
                     </div>
+                    <button onclick="downloadMap('penipuan')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
+                    Unduh Peta
+                </button>
                 </div>
                 <div id="penggelapan" class="content hidden">
                     <h2 class="text-xl font-semibold mb-2">Peta Penggelapan Provinsi Aceh</h2>
                     <!-- Filter Tahun untuk Crime Clearance Total -->
-                    <div class=" top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
+                    <div class="top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
                         <label for="year-filter-penggelapan" class="block text-sm font-semibold">Pilih Tahun</label>
                         <select id="year-filter-penggelapan" class="w-full p-2 bg-red-700 text-white rounded-md"
                             onchange="filterByYear('penggelapan')">
                             <!-- Daftar tahun akan diisi oleh JavaScript -->
                         </select>
                     </div>
+                    <button onclick="downloadMap('penggelapan')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
+                    Unduh Peta
+                </button>
                 </div>
                 <div id="perjudian" class="content hidden">
                     <h2 class="text-xl font-semibold mb-2">Peta Perjudian Provinsi Aceh</h2>
                     <!-- Filter Tahun untuk Crime Clearance Total -->
-                    <div class=" top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
+                    <div class="top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
                         <label for="year-filter-perjudian" class="block text-sm font-semibold">Pilih Tahun</label>
                         <select id="year-filter-perjudian" class="w-full p-2 bg-red-700 text-white rounded-md"
                             onchange="filterByYear('perjudian')">
                             <!-- Daftar tahun akan diisi oleh JavaScript -->
                         </select>
                     </div>
+                    <button onclick="downloadMap('perjudian)" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
+                    Unduh Peta
+                </button>
                 </div>
                 <div id="pemerkosaan" class="content hidden">
                     <h2 class="text-xl font-semibold mb-2">Peta Pemerkosaan Provinsi Aceh</h2>
                     <!-- Filter Tahun untuk Crime Clearance Total -->
-                    <div class=" top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
+                    <div class="top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
                         <label for="year-filter-pemerkosaan" class="block text-sm font-semibold">Pilih Tahun</label>
                         <select id="year-filter-pemerkosaan" class="w-full p-2 bg-red-700 text-white rounded-md"
                             onchange="filterByYear('pemerkosaan')">
                             <!-- Daftar tahun akan diisi oleh JavaScript -->
                         </select>
                     </div>
+                    <button onclick="downloadMap('pemerkosaan')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
+                    Unduh Peta
+                </button>
                 </div>
                 <div id="pembakaran" class="content hidden">
                     <h2 class="text-xl font-semibold mb-2">Peta Pembakaran Provinsi Aceh</h2>
                     <!-- Filter Tahun untuk Crime Clearance Total -->
-                    <div class=" top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
+                    <div class="top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
                         <label for="year-filter-pembakaran" class="block text-sm font-semibold">Pilih Tahun</label>
                         <select id="year-filter-pembakaran" class="w-full p-2 bg-red-700 text-white rounded-md"
                             onchange="filterByYear('pembakaran')">
                             <!-- Daftar tahun akan diisi oleh JavaScript -->
                         </select>
                     </div>
+                    <button onclick="downloadMap('pembakaran')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
+                    Unduh Peta
+                </button>
                 </div>
                 <div id="pemeresan" class="content hidden">
                     <h2 class="text-xl font-semibold mb-2">Peta Pemerasan Provinsi Aceh</h2>
                     <!-- Filter Tahun untuk Crime Clearance Total -->
-                    <div class=" top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
+                    <div class="top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
                         <label for="year-filter-pemeresan" class="block text-sm font-semibold">Pilih Tahun</label>
                         <select id="year-filter-pemeresan" class="w-full p-2 bg-red-700 text-white rounded-md"
                             onchange="filterByYear('pemeresan')">
                             <!-- Daftar tahun akan diisi oleh JavaScript -->
                         </select>
                     </div>
+                    <button onclick="downloadMap('pemeresan')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
+                    Unduh Peta
+                </button>
                 </div>
                 <div id="pembunuhan" class="content hidden">
                     <h2 class="text-xl font-semibold mb-2">Peta Crime Pembunuhan Provinsi Aceh</h2>
                     <!-- Filter Tahun untuk Crime Clearance Total -->
-                    <div class=" top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
+                    <div class="top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-[50px]">
                         <label for="year-filter-pembunuhan" class="block text-sm font-semibold">Pilih Tahun</label>
                         <select id="year-filter-pembunuhan" class="w-full p-2 bg-red-700 text-white rounded-md"
                             onchange="filterByYear('pembunuhan')">
                             <!-- Daftar tahun akan diisi oleh JavaScript -->
                         </select>
                     </div>
+                    <button onclick="downloadMap('pembunuhan')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
+                    Unduh Peta
+                </button>
                 </div>
 
 
@@ -231,6 +256,30 @@
                     })
                     .catch(error => console.error('Error loading data:', error));
             }
+
+            function downloadMap(endpoint) {
+const mapElement = document.getElementById('content-area'); // Tangkap seluruh area konten
+const filename = 
+            endpoint === 'pencurian' ? 'Peta_Pencurian_Provinsi_Aceh.png' :
+            endpoint === 'penipuan' ? 'Peta_Penipuan_Provinsi_Aceh.png' :
+            endpoint === 'penggelapan' ? 'Peta_Penggelapan_Provinsi_Aceh.png' :
+            endpoint === 'perjudian' ? 'Peta_Perjudian_Provinsi_Aceh.png' :
+            endpoint === 'pemerkosaan' ? 'Peta_Pemerkosaan_Provinsi_Aceh.png' :
+            endpoint === 'pembakaran' ? 'Peta_Pembakaran_Provinsi_Aceh.png' :
+            endpoint === 'pemeresan' ? 'Peta_Pemerasan_Provinsi_Aceh.png' :
+            endpoint === 'pembunuhan' ? 'Peta_Pembunuhan_Provinsi_Aceh.png' :
+            'Peta_3_Provinsi_Aceh.png';  // Default jika tidak ada yang cocok
+
+
+    // Menggunakan html2canvas untuk merender seluruh konten
+    html2canvas(mapElement).then(canvas => {
+        const link = document.createElement('a');
+        link.download = filename;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    });
+}
+
 
             // Mengupdate dropdown tahun
         function updateYearFilter(endpoint) {

@@ -12,18 +12,21 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
     <!-- Tambahkan Leaflet Search CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet-search/dist/leaflet-search.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 </head>
 
 <body class="bg-gray-100">
     <div class="flex flex-col md:flex-row m-2 space-y-2 md:space-y-0">
         <!-- Sidebar -->
         <div class="w-2/12 bg-red-900 text-white rounded-md p-4 md:p-2">
-            <ul class="space-y-2">
-                <li class="cursor-pointer hover:bg-red-700 p-2 rounded" onclick="showContent('ct')">Crime Total</li>
-                <li class="cursor-pointer hover:bg-red-700 p-2 rounded" onclick="showContent('cct')">Crime Clearance
-                    Total</li>
-            </ul>
-        </div>
+    <ul class="space-y-2">
+        <li class="cursor-pointer hover:bg-red-700 p-2 rounded" onclick="showContent('ct')">Crime Total</li>
+        <li class="cursor-pointer hover:bg-red-700 p-2 rounded" onclick="showContent('cct')">Crime Clearance Total</li>
+        </li>
+    </ul>
+</div>
+
         <!-- Content Area (Peta) -->
         <div class="w-11/12 bg-gray-100 rounded-md p-4 relative ml-0 md:ml-2" id="content-area">
             <!-- Div untuk menampilkan peta -->
@@ -37,6 +40,9 @@
                         <!-- Daftar tahun akan diisi oleh JavaScript -->
                     </select>
                 </div>
+                <button onclick="downloadMap('ct')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
+        Unduh Peta
+               </button>
             </div>
             <div id="cct" class="content hidden">
                 <h2 class="text-xl font-semibold mb-2">Peta Crime Clearance Total Provinsi Aceh</h2>
@@ -48,6 +54,9 @@
                         <!-- Daftar tahun akan diisi oleh JavaScript -->
                     </select>
                 </div>
+                <button onclick="downloadMap('cct')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
+        Unduh Peta
+              </button>
             </div>
 
             <!-- Map div dengan margin-top untuk memberi jarak antara filter dan peta -->
@@ -131,6 +140,20 @@
                 fillOpacity: 0.7
             };
         }
+
+        function downloadMap(endpoint) {
+    const mapElement = document.getElementById('content-area'); // Tangkap seluruh area konten
+    const filename = endpoint === 'ct' ? 'Peta_Crime_Total_Dengan_Layout.png' : 'Peta_Crime_Clearance_Total_Dengan_Layout.png';
+
+    // Menggunakan html2canvas untuk merender seluruh konten
+    html2canvas(mapElement).then(canvas => {
+        const link = document.createElement('a');
+        link.download = filename;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    });
+}
+
 
         function onEachFeature(feature, layer) {
             console.log(crimeData)

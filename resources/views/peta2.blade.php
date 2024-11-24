@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
     <!-- Tambahkan Leaflet Search CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet-search/dist/leaflet-search.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 
 <body class="bg-gray-100">
@@ -28,63 +29,66 @@
             </div>
         <!-- Content Area (Peta) -->
         <div class="w-11/12 bg-gray-100 rounded-md p-4 relative ml-0 md:ml-2" id="content-area">
-            <!-- Div untuk menampilkan peta -->
             <div id="p21" class="content hidden">
                 <h2 class="text-xl font-semibold mb-2">Peta P21 Provinsi Aceh</h2>
-                <!-- Filter Tahun untuk Crime Total -->
                 <div class="absolute top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-4">
                     <label for="year-filter-p21" class="block text-sm font-semibold">Pilih Tahun</label>
-                    <select id="year-filter-p21" class="w-full p-2 bg-red-700 text-white rounded-md"
-                        onchange="filterByYear('p21')">
+                    <select id="year-filter-p21" class="w-full p-2 bg-red-700 text-white rounded-md" onchange="filterByYear('p21')">
                         <!-- Daftar tahun akan diisi oleh JavaScript -->
                     </select>
                 </div>
+                <button onclick="downloadMap('p21')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
+                    Unduh Peta
+                </button>
             </div>
             <div id="rj" class="content hidden">
                 <h2 class="text-xl font-semibold mb-2">Peta Restorative Justice Provinsi Aceh</h2>
-                <!-- Filter Tahun untuk Crime Clearance Total -->
                 <div class="absolute top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-4">
                     <label for="year-filter-rj" class="block text-sm font-semibold">Pilih Tahun</label>
-                    <select id="year-filter-rj" class="w-full p-2 bg-red-700 text-white rounded-md"
-                        onchange="filterByYear('rj')">
+                    <select id="year-filter-rj" class="w-full p-2 bg-red-700 text-white rounded-md" onchange="filterByYear('rj')">
                         <!-- Daftar tahun akan diisi oleh JavaScript -->
                     </select>
                 </div>
+                <button onclick="downloadMap('rj')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
+                    Unduh Peta
+                </button>
             </div>
             <div id="sp2lid" class="content hidden">
                 <h2 class="text-xl font-semibold mb-2">Peta SP2LID Provinsi Aceh</h2>
-                <!-- Filter Tahun untuk Crime Clearance Total -->
                 <div class="absolute top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-4">
                     <label for="year-filter-sp2lid" class="block text-sm font-semibold">Pilih Tahun</label>
-                    <select id="year-filter-sp2lid" class="w-full p-2 bg-red-700 text-white rounded-md"
-                        onchange="filterByYear('sp2lid')">
+                    <select id="year-filter-sp2lid" class="w-full p-2 bg-red-700 text-white rounded-md" onchange="filterByYear('sp2lid')">
                         <!-- Daftar tahun akan diisi oleh JavaScript -->
                     </select>
                 </div>
+                <button onclick="downloadMap('sp2lid')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
+                    Unduh Peta
+                </button>
             </div>
             <div id="tahap-2" class="content hidden">
-                <h2 class="text-xl font-semibold mb-2">Peta Tahap 2Provinsi Aceh</h2>
-                <!-- Filter Tahun untuk Crime Clearance Total -->
+                <h2 class="text-xl font-semibold mb-2">Peta Tahap 2 Provinsi Aceh</h2>
                 <div class="absolute top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-4">
                     <label for="year-filter-tahap-2" class="block text-sm font-semibold">Pilih Tahun</label>
-                    <select id="year-filter-tahap-2" class="w-full p-2 bg-red-700 text-white rounded-md"
-                        onchange="filterByYear('tahap-2')">
+                    <select id="year-filter-tahap-2" class="w-full p-2 bg-red-700 text-white rounded-md" onchange="filterByYear('tahap-2')">
                         <!-- Daftar tahun akan diisi oleh JavaScript -->
                     </select>
                 </div>
+                <button onclick="downloadMap('tahap-2')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
+                    Unduh Peta
+                </button>
             </div>
             <div id="sp3" class="content hidden">
                 <h2 class="text-xl font-semibold mb-2">Peta SP3 Provinsi Aceh</h2>
-                <!-- Filter Tahun untuk Crime Clearance Total -->
                 <div class="absolute top-12 left-4 bg-white p-2 rounded-md shadow-md z-20 w-48 mb-4">
                     <label for="year-filter-sp3" class="block text-sm font-semibold">Pilih Tahun</label>
-                    <select id="year-filter-sp3" class="w-full p-2 bg-red-700 text-white rounded-md"
-                        onchange="filterByYear('sp3')">
+                    <select id="year-filter-sp3" class="w-full p-2 bg-red-700 text-white rounded-md" onchange="filterByYear('sp3')">
                         <!-- Daftar tahun akan diisi oleh JavaScript -->
                     </select>
                 </div>
+                <button onclick="downloadMap('sp3')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
+                    Unduh Peta
+                </button>
             </div>
-
             <!-- Map div dengan margin-top untuk memberi jarak antara filter dan peta -->
             <div id="map" class="h-screen w-full rounded-md mt-32"></div>
 
@@ -220,6 +224,25 @@
                 .catch(error => console.error('Error loading data:', error));
         }
 
+        function downloadMap(endpoint) {
+const mapElement = document.getElementById('content-area'); // Tangkap seluruh area konten
+const filename = 
+    endpoint === 'p21' ? 'Peta_P21_Provinsi_Aceh.png' :
+    endpoint === 'rj' ? 'Peta_Restorative_Justice_Provinsi_Aceh.png' :
+    endpoint === 'sp2lid' ? 'Peta_SP2LID_Provinsi_Aceh.png' :
+    endpoint === 'tahap-2' ? 'Peta_Tahap_2_Provinsi_Aceh.png' :
+    endpoint === 'sp3' ? 'Peta_SP3_Provinsi_Aceh.png' :
+    'Peta_Default_Provinsi_Aceh.png';  // Default jika tidak ada yang cocok
+
+
+    // Menggunakan html2canvas untuk merender seluruh konten
+    html2canvas(mapElement).then(canvas => {
+        const link = document.createElement('a');
+        link.download = filename;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    });
+}
 
         // Mengupdate dropdown tahun
         function updateYearFilter(endpoint) {
