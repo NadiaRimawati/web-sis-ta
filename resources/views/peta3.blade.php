@@ -43,9 +43,6 @@
                             <!-- Daftar tahun akan diisi oleh JavaScript -->
                         </select>
                     </div>
-                    <button onclick="downloadMap('pencurian)" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
-                    Unduh Peta
-                </button>
                 </div>
                 <div id="penipuan" class="content hidden">
                     <h2 class="text-xl font-semibold mb-2">Peta Penipuan Provinsi Aceh</h2>
@@ -57,9 +54,6 @@
                             <!-- Daftar tahun akan diisi oleh JavaScript -->
                         </select>
                     </div>
-                    <button onclick="downloadMap('penipuan')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
-                    Unduh Peta
-                </button>
                 </div>
                 <div id="penggelapan" class="content hidden">
                     <h2 class="text-xl font-semibold mb-2">Peta Penggelapan Provinsi Aceh</h2>
@@ -71,9 +65,6 @@
                             <!-- Daftar tahun akan diisi oleh JavaScript -->
                         </select>
                     </div>
-                    <button onclick="downloadMap('penggelapan')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
-                    Unduh Peta
-                </button>
                 </div>
                 <div id="perjudian" class="content hidden">
                     <h2 class="text-xl font-semibold mb-2">Peta Perjudian Provinsi Aceh</h2>
@@ -85,9 +76,6 @@
                             <!-- Daftar tahun akan diisi oleh JavaScript -->
                         </select>
                     </div>
-                    <button onclick="downloadMap('perjudian)" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
-                    Unduh Peta
-                </button>
                 </div>
                 <div id="pemerkosaan" class="content hidden">
                     <h2 class="text-xl font-semibold mb-2">Peta Pemerkosaan Provinsi Aceh</h2>
@@ -99,9 +87,6 @@
                             <!-- Daftar tahun akan diisi oleh JavaScript -->
                         </select>
                     </div>
-                    <button onclick="downloadMap('pemerkosaan')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
-                    Unduh Peta
-                </button>
                 </div>
                 <div id="pembakaran" class="content hidden">
                     <h2 class="text-xl font-semibold mb-2">Peta Pembakaran Provinsi Aceh</h2>
@@ -113,9 +98,6 @@
                             <!-- Daftar tahun akan diisi oleh JavaScript -->
                         </select>
                     </div>
-                    <button onclick="downloadMap('pembakaran')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
-                    Unduh Peta
-                </button>
                 </div>
                 <div id="pemeresan" class="content hidden">
                     <h2 class="text-xl font-semibold mb-2">Peta Pemerasan Provinsi Aceh</h2>
@@ -127,9 +109,6 @@
                             <!-- Daftar tahun akan diisi oleh JavaScript -->
                         </select>
                     </div>
-                    <button onclick="downloadMap('pemeresan')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
-                    Unduh Peta
-                </button>
                 </div>
                 <div id="pembunuhan" class="content hidden">
                     <h2 class="text-xl font-semibold mb-2">Peta Crime Pembunuhan Provinsi Aceh</h2>
@@ -141,9 +120,6 @@
                             <!-- Daftar tahun akan diisi oleh JavaScript -->
                         </select>
                     </div>
-                    <button onclick="downloadMap('pembunuhan')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
-                    Unduh Peta
-                </button>
                 </div>
 
 
@@ -256,30 +232,6 @@
                     })
                     .catch(error => console.error('Error loading data:', error));
             }
-
-            function downloadMap(endpoint) {
-const mapElement = document.getElementById('content-area'); // Tangkap seluruh area konten
-const filename = 
-            endpoint === 'pencurian' ? 'Peta_Pencurian_Provinsi_Aceh.png' :
-            endpoint === 'penipuan' ? 'Peta_Penipuan_Provinsi_Aceh.png' :
-            endpoint === 'penggelapan' ? 'Peta_Penggelapan_Provinsi_Aceh.png' :
-            endpoint === 'perjudian' ? 'Peta_Perjudian_Provinsi_Aceh.png' :
-            endpoint === 'pemerkosaan' ? 'Peta_Pemerkosaan_Provinsi_Aceh.png' :
-            endpoint === 'pembakaran' ? 'Peta_Pembakaran_Provinsi_Aceh.png' :
-            endpoint === 'pemeresan' ? 'Peta_Pemerasan_Provinsi_Aceh.png' :
-            endpoint === 'pembunuhan' ? 'Peta_Pembunuhan_Provinsi_Aceh.png' :
-            'Peta_3_Provinsi_Aceh.png';  // Default jika tidak ada yang cocok
-
-
-    // Menggunakan html2canvas untuk merender seluruh konten
-    html2canvas(mapElement).then(canvas => {
-        const link = document.createElement('a');
-        link.download = filename;
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-    });
-}
-
 
             // Mengupdate dropdown tahun
         function updateYearFilter(endpoint) {

@@ -40,9 +40,6 @@
                         <!-- Daftar tahun akan diisi oleh JavaScript -->
                     </select>
                 </div>
-                <button onclick="downloadMap('ct')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
-        Unduh Peta
-               </button>
             </div>
             <div id="cct" class="content hidden">
                 <h2 class="text-xl font-semibold mb-2">Peta Crime Clearance Total Provinsi Aceh</h2>
@@ -54,9 +51,6 @@
                         <!-- Daftar tahun akan diisi oleh JavaScript -->
                     </select>
                 </div>
-                <button onclick="downloadMap('cct')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
-        Unduh Peta
-              </button>
             </div>
 
             <!-- Map div dengan margin-top untuk memberi jarak antara filter dan peta -->
@@ -141,20 +135,6 @@
             };
         }
 
-        function downloadMap(endpoint) {
-    const mapElement = document.getElementById('content-area'); // Tangkap seluruh area konten
-    const filename = endpoint === 'ct' ? 'Peta_Crime_Total_Dengan_Layout.png' : 'Peta_Crime_Clearance_Total_Dengan_Layout.png';
-
-    // Menggunakan html2canvas untuk merender seluruh konten
-    html2canvas(mapElement).then(canvas => {
-        const link = document.createElement('a');
-        link.download = filename;
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-    });
-}
-
-
         function onEachFeature(feature, layer) {
             console.log(crimeData)
             const regencyData = filteredCrimeData.find(item => item.regency === feature.properties.Kab_Kota);
@@ -180,6 +160,7 @@
              }
 
         function getData(endpoint) {
+            console.log(endpoint)
             fetch(`/kriminalitas/${endpoint}`)
                 .then(response => response.json())
                 .then(data => {

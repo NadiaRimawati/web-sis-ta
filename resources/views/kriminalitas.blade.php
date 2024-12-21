@@ -92,7 +92,7 @@
             title: 'Sukses',
             text: '{{ session('success') }}',
             showConfirmButton: false,
-            timer: 1500
+            timer: 2000
         }).then(function() {
             window.location.href = "{{ route('kriminalitas') }}"; // Redirect ke halaman yang diinginkan
         });
@@ -106,7 +106,7 @@
             title: 'Kesalahan',
             text: '{{ session('error') }}',
             showConfirmButton: false,
-            timer: 1500
+            timer: 2000
         }).then(function() {
             window.location.href = "{{ route('kriminalitas') }}"; // Redirect ke halaman yang diinginkan
         });
@@ -141,7 +141,7 @@
         title: 'Data sedang diunduh!',
         icon: 'info',
         showConfirmButton: false,
-        timer: 1500
+        timer: 2000
     }).then(() => {
         // Redirect ke URL unduh XLSX
         window.location.href = event.target.href;

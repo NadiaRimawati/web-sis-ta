@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\Cache;
 
 class KriminalitasController extends Controller
 {
+
+    public function index()
+    {
+        // Ambil data yang ingin ditampilkan di halaman utama
+        $kriminalitas = CrimeIncident::all(); // atau query sesuai kebutuhan
+
+        // Kembalikan ke view yang sesuai, misalnya kriminalitas.index
+        return view('kriminalitas', compact('kriminalitas'));
+    }
     // Metode untuk mendapatkan semua data kriminalitas
     public function getall()
     {
@@ -106,9 +115,12 @@ class KriminalitasController extends Controller
                                      ->first();
 
         if ($existingData) {
-            return redirect()->back()->withErrors(['msg' => 'Data untuk daerah dan tahun ini sudah ada!']);
-        }
+            return redirect()->route('kriminalitas')
+            ->with('error', 'Data untuk daerah dan tahun ini sudah ada!');
 
+}
+
+                                    
         // Menambahkan data kriminalitas baru
         CrimeIncident::create([
             'regency' => $request->regency,

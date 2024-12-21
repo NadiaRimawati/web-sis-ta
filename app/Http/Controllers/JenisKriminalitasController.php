@@ -42,8 +42,10 @@ class JenisKriminalitasController extends Controller
         $existingData = CrimeExist::where('regency', $request->regency)->where('years', $request->years)->first();
 
         if ($existingData) {
-            return redirect()->back()->withErrors(['msg' => 'Data untuk daerah dan tahun ini sudah ada!']);
-        }
+            return redirect()->route('jenis-kriminalitas.index')
+            ->with('error', 'Data untuk daerah dan tahun ini sudah ada!');
+
+}
 
         // Menyimpan data ke database
         CrimeExist::create($request->only([

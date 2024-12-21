@@ -9,8 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Peta GeoJSON dengan Leaflet</title>
     <!-- Tambahkan Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
-    <!-- Tambahkan Leaflet Search CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />  
     <link rel="stylesheet" href="https://unpkg.com/leaflet-search/dist/leaflet-search.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
@@ -37,9 +36,6 @@
                         <!-- Daftar tahun akan diisi oleh JavaScript -->
                     </select>
                 </div>
-                <button onclick="downloadMap('p21')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
-                    Unduh Peta
-                </button>
             </div>
             <div id="rj" class="content hidden">
                 <h2 class="text-xl font-semibold mb-2">Peta Restorative Justice Provinsi Aceh</h2>
@@ -49,9 +45,6 @@
                         <!-- Daftar tahun akan diisi oleh JavaScript -->
                     </select>
                 </div>
-                <button onclick="downloadMap('rj')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
-                    Unduh Peta
-                </button>
             </div>
             <div id="sp2lid" class="content hidden">
                 <h2 class="text-xl font-semibold mb-2">Peta SP2LID Provinsi Aceh</h2>
@@ -61,9 +54,6 @@
                         <!-- Daftar tahun akan diisi oleh JavaScript -->
                     </select>
                 </div>
-                <button onclick="downloadMap('sp2lid')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
-                    Unduh Peta
-                </button>
             </div>
             <div id="tahap-2" class="content hidden">
                 <h2 class="text-xl font-semibold mb-2">Peta Tahap 2 Provinsi Aceh</h2>
@@ -73,9 +63,6 @@
                         <!-- Daftar tahun akan diisi oleh JavaScript -->
                     </select>
                 </div>
-                <button onclick="downloadMap('tahap-2')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
-                    Unduh Peta
-                </button>
             </div>
             <div id="sp3" class="content hidden">
                 <h2 class="text-xl font-semibold mb-2">Peta SP3 Provinsi Aceh</h2>
@@ -85,9 +72,6 @@
                         <!-- Daftar tahun akan diisi oleh JavaScript -->
                     </select>
                 </div>
-                <button onclick="downloadMap('sp3')" class="absolute top-4 right-4 bg-red-700 text-white px-4 py-2 rounded-md shadow-md">
-                    Unduh Peta
-                </button>
             </div>
             <!-- Map div dengan margin-top untuk memberi jarak antara filter dan peta -->
             <div id="map" class="h-screen w-full rounded-md mt-32"></div>
@@ -223,26 +207,6 @@
                 })
                 .catch(error => console.error('Error loading data:', error));
         }
-
-        function downloadMap(endpoint) {
-const mapElement = document.getElementById('content-area'); // Tangkap seluruh area konten
-const filename = 
-    endpoint === 'p21' ? 'Peta_P21_Provinsi_Aceh.png' :
-    endpoint === 'rj' ? 'Peta_Restorative_Justice_Provinsi_Aceh.png' :
-    endpoint === 'sp2lid' ? 'Peta_SP2LID_Provinsi_Aceh.png' :
-    endpoint === 'tahap-2' ? 'Peta_Tahap_2_Provinsi_Aceh.png' :
-    endpoint === 'sp3' ? 'Peta_SP3_Provinsi_Aceh.png' :
-    'Peta_Default_Provinsi_Aceh.png';  // Default jika tidak ada yang cocok
-
-
-    // Menggunakan html2canvas untuk merender seluruh konten
-    html2canvas(mapElement).then(canvas => {
-        const link = document.createElement('a');
-        link.download = filename;
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-    });
-}
 
         // Mengupdate dropdown tahun
         function updateYearFilter(endpoint) {

@@ -18,7 +18,7 @@ class user extends Seeder
             [
                 'nip' => "2008107010005",
                 'full_name' => "Nadia",
-                'password' => Hash::make("nadia123"),
+                'password' => Hash::make("nadia16"),
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

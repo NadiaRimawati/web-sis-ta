@@ -24,7 +24,7 @@
             <div class="w-1/2 h-48 p-6 bg-gray-200 rounded-l-md flex items-center justify-center">
                 <p class="text-black text-center text-1xl">
                     WebGIS Persebaran Kriminalitas di Aceh<br>
-                    Bertujuan memberikan informasi akurat mengenai tingkat kriminalitas di setiap kabupaten di Aceh.
+                    Bertujuan memberikan informasi mengenai tingkat kriminalitas di setiap kabupaten di Aceh.
                 </p>
             </div>
             <!-- Kotak Gambar di Samping Kanan -->

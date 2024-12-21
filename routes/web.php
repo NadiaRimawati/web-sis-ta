@@ -32,15 +32,15 @@ Route::middleware('auth')->group(function () {
 });
 
 // Rute Kriminalitas
-Route::prefix('kriminalitas')->middleware('auth')->group(function () {
-    Route::get('/', [KriminalitasController::class, 'getall'])->name('kriminalitas');
-    Route::get('/{id}/edit', [KriminalitasController::class, 'edit'])->name('kriminalitas.edit');
-    Route::put('/update/{id}', [KriminalitasController::class, 'update'])->name('kriminalitas.update');
-    Route::get('/create', [KriminalitasController::class, 'create'])->name('kriminalitas.create');
-    Route::post('/create', [KriminalitasController::class, 'post'])->name('kriminalitas.post');
-    Route::delete('/{id}', [KriminalitasController::class, 'destroy'])->name('kriminalitas.destroy');
-    Route::get('/download', [KriminalitasController::class, 'download'])->name('kriminalitas.download');
-    Route::get('/kriminalitas', [KriminalitasController::class, 'index'])->name('kriminalitas.index');
+Route::prefix('kriminalitas')->group(function () {
+    Route::get('/', [KriminalitasController::class, 'getall'])->name('kriminalitas')->middleware(middleware: 'auth');
+    Route::get('/{id}/edit', [KriminalitasController::class, 'edit'])->name('kriminalitas.edit')->middleware(middleware: 'auth');
+    Route::put('/update/{id}', [KriminalitasController::class, 'update'])->name('kriminalitas.update')->middleware(middleware: 'auth');
+    Route::get('/create', [KriminalitasController::class, 'create'])->name('kriminalitas.create')->middleware(middleware: 'auth');
+    Route::post('/create', [KriminalitasController::class, 'post'])->name('kriminalitas.post')->middleware(middleware: 'auth');
+    Route::delete('/{id}', [KriminalitasController::class, 'destroy'])->name('kriminalitas.destroy')->middleware(middleware: 'auth');
+    Route::get('/download', [KriminalitasController::class, 'download'])->name('kriminalitas.download')->middleware(middleware: 'auth');
+    Route::get('/kriminalitas', [KriminalitasController::class, 'index'])->name('kriminalitas.index')->middleware(middleware: 'auth');
 
     // Data Kriminalitas
     Route::get('/p21', [PetaController::class, 'getTotalP21']);
@@ -54,14 +54,14 @@ Route::prefix('kriminalitas')->middleware('auth')->group(function () {
 });
 
 // Rute Jenis Kriminalitas
-Route::prefix('jenis-kriminalitas')->middleware('auth')->group(function () {
-    Route::get('/', [JenisKriminalitasController::class, 'index'])->name('jenis-kriminalitas.index');
-    Route::get('/{id}/edit', [JenisKriminalitasController::class, 'edit'])->name('jenis-kriminalitas.edit');
-    Route::put('/update/{id}', [JenisKriminalitasController::class, 'update'])->name('jenis-kriminalitas.update');
-    Route::get('/create', [JenisKriminalitasController::class, 'create'])->name('jenis-kriminalitas.create');
-    Route::post('/create', [JenisKriminalitasController::class, 'store'])->name('jenis-kriminalitas.post');
-    Route::delete('/{id}', [JenisKriminalitasController::class, 'destroy'])->name('jenis-kriminalitas.destroy');
-    Route::get('/download', [JenisKriminalitasController::class, 'download'])->name('jenis-kriminalitas.download');
+Route::prefix('jenis-kriminalitas')->group(function () {
+    Route::get('/', [JenisKriminalitasController::class, 'index'])->name('jenis-kriminalitas.index')->middleware(middleware: 'auth');
+    Route::get('/{id}/edit', [JenisKriminalitasController::class, 'edit'])->name('jenis-kriminalitas.edit')->middleware(middleware: 'auth');
+    Route::put('/update/{id}', [JenisKriminalitasController::class, 'update'])->name('jenis-kriminalitas.update')->middleware(middleware: 'auth');
+    Route::get('/create', [JenisKriminalitasController::class, 'create'])->name('jenis-kriminalitas.create')->middleware(middleware: 'auth');
+    Route::post('/create', [JenisKriminalitasController::class, 'store'])->name('jenis-kriminalitas.post')->middleware(middleware: 'auth');
+    Route::delete('/{id}', [JenisKriminalitasController::class, 'destroy'])->name('jenis-kriminalitas.destroy')->middleware(middleware: 'auth');
+    Route::get('/download', [JenisKriminalitasController::class, 'download'])->name('jenis-kriminalitas.download')->middleware(middleware: 'auth');
     Route::get('/{crimeType}', [JenisKriminalitasController::class, 'getCrimeDataByType']);
 });
 

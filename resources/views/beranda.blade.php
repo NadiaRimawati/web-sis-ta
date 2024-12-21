@@ -16,18 +16,13 @@
             </div>
         </div>
     </div>
-
-    <!-- Menambah margin atas pada section FAQ -->
     <div class="flex flex-col items-center justify-center mt-16 mb-16">
-    <!-- Menambahkan mb-16 untuk jarak antara FAQ dan footer -->
-        <!-- Judul FAQ -->
+ 
         <div class="text-center mb-4">
             <h2 class="text-3xl font-bold mb-4">Kamu punya pertanyaan?</h2>
             <p class="text-gray-600 mt-4">Simak beberapa pertanyaan-pertanyaan berikut, siapa tahu salah satunya adalah <br> pertanyaan yang ingin kamu tanyakan.</p>
         </div>
-
-        <!-- Komponen FAQ Start -->
-        <div class="w-full max-w-screen-sm space-y-8"> <!-- space-y-8 menambahkan jarak antar item -->
+        <div class="w-full max-w-screen-sm space-y-8"> 
             <button class="w-full border-b-2 border-gray-300 pb-8 text-left group focus:outline-none">
                 <div class="flex justify-between items-center">
                     <div class="text-lg font-semibold">P: Apa yang dimaksud dengan Crime Total (CT)?</div>
@@ -41,7 +36,6 @@
                     Jika di Kota Banda Aceh terdapat 5 kasus pencurian, 3 kasus perampokan, dan 2 kasus penipuan, maka Crime Total (CT) untuk Banda Aceh adalah 10.</p>
                 </div>
             </button>
-
             <button class="w-full border-b-2 border-gray-300 pb-8 text-left group focus:outline-none">
                 <div class="flex justify-between items-center">
                     <div class="text-lg font-semibold">P: Apa yang dimaksud dengan Crime Clearance (CC)?</div>
@@ -54,7 +48,6 @@
                     Contoh: Jika pada tahun 2024 terdapat 100 kasus pencurian di Banda Aceh dan 80 di antaranya berhasil diidentifikasi dan ditangani, maka Crime Clearance (CC) untuk kasus pencurian tersebut adalah 80.</p>
                 </div>
             </button>
-
             <button class="w-full border-b-2 border-gray-300 pb-8 text-left group focus:outline-none">
                 <div class="flex justify-between items-center">
                     <div class="text-lg font-semibold">P: Apa jenis data yang tersedia di GIS-UP?</div>

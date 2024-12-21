@@ -121,9 +121,9 @@
             title: 'Kesalahan',
             text: '{{ session('error') }}',
             showConfirmButton: false,
-            timer: 1500
+            timer: 2000
         }).then(function() {
-            window.location.href = "{{ route('jenis_kriminalitas.index') }}"; // Redirect ke halaman yang diinginkan
+            window.location.href = "{{ route('jenis-kriminalitas.index') }}"; // Redirect ke halaman yang diinginkan
         });
     </script>
 @endif
@@ -155,7 +155,7 @@
         title: 'Data sedang diunduh!',
         icon: 'info',
         showConfirmButton: false,
-        timer: 1500
+        timer: 2000
     }).then(() => {
         // Redirect ke URL unduh XLSX
         window.location.href = event.target.href;
