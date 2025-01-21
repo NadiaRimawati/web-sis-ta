@@ -103,7 +103,7 @@
             getData(contentId); // Ambil data baru
         }
 
-        const map = L.map('map').setView([4.5559, 96.8299], 7); // Mengatur posisi peta awal (Aceh)
+        const map = L.map('map').setView([4.5559, 96.8299], 8); // Mengatur posisi peta awal (Aceh)
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
